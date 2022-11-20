@@ -123,3 +123,14 @@ kholase ba props --> you can pass specific values for different variables ---> m
 age mikhay chandta chiz ro return kuni dar return --> masalan dar return e employee --> az () ghable return use kun
 va deghat kun az <> </> yani fragemment aval va akhar code use kuni yani hmae chi ro bendazi to in chun bayad ye single element return beshe 
 semicolon ro ham bardar
+
+
+props are not meant to be changed in child copmponet
+-------------------------------------------------------------------------------------
+state:
+vase taghire props dar parent 
+import kardim useState ro dar App.js va ba setRole state ijad kardim --> state ijad kardim chun var be UI vasl nist vali state vasle va vorodi input ee ke gereftim ro set kardim be role e Abby 
+
+------------------------------
+useState is an example of a hook --> there are other hooks to introduce functionality into our component very easily
+hooks alow to use feature without class ---> we prefer to use functions with hooks 
