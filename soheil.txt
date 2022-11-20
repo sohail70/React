@@ -108,3 +108,4 @@ jsx dar vaghe syntax extesnion to js hast ---> templatizing h1 using variable  a
 kholase: ---> html+javasript ---> eval to html
 
 
+avalin component ma Employee hast ke ye folder ijad kardim be esme component va bad dar app.js import kardim va dar return tag esh ro neveshtim
