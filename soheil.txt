@@ -63,3 +63,48 @@ oon paeen ham reportWebVitals rocall kardim va comment haye balash ro hazf kun
 line 7 app.js ham logo ro neveshte tag ro pak kun
 
 index.css ro ham az index.js pak kun
+
+
+----------------------------------------------------------------------------
+
+localhost:3000 ---> we are developing locally ---> npm run build ro bezani mikhay bebari to internet yani --> build dir dorost mikune va inaro to aws3  upload mikunu
+
+age mikhay inaro ham locally check kuni mituni benvi ---> serve -s build --> to serve it on local host as well
+
+npm run start --> loacl developing ---> any changes will be immediately shown to browser
+npm build --->
+serve command to test it
+
+
+dobare npm run start ro bezan ta bargardi be development
+
+taghir bedi build file taghir nemikune balke bayad har bar npm build ro bezani AGAIN
+
+dar packages.json mitoni dependencies age dari be pack haye dg bezari
+
+npm install ro bezan ---> dar package dep haee ke neveshti ro install mikune
+
+
+package-lock .json exact version use shode dar in app ro neshoon mide ta baghie bebinan ---> yani masala ^13.4.0 in yani had aghal version 13.4 bahse
+npm install ro bezani regenerate mikune package-lock.json ro
+
+in pack haro dar source control nakun ---> dar node_modules hame chi oonja nasb hast ---> ino ham mishe generate kar 
+pakesh kun va bad npm install bezani hame dobare nasb mishe! ---> vase hamin chun mitone generate beshe dar source control (git ) nemizarimesh
+
+dar .gitignore har chi benvisi ignore mishe 
+masalan /build ignore mishe chun generetae mishan rahat
+ya masalan /node_modules
+
+
+
+manifest.json --> mobile icon --> update bashe in file vase production
+robots.txt --> how differnet websracpers should treat this for bots and search engine that is.
+
+------------------------------------------------------------------------------------
+everything in react is desinged as a comp
+component ---> reusable code to use all over our app
+component shabih func hastan --> faghat html return mikunan ---> dar vaghe hamoon jsx barmigardonan ---> fek kun hamoon html hast
+jsx dar vaghe syntax extesnion to js hast ---> templatizing h1 using variable  az ghabelyat hash hast
+kholase: ---> html+javasript ---> eval to html
+
+

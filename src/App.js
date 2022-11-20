@@ -1,12 +1,11 @@
 import './App.css';
+import Employee from './components/Employee'; // ./ means search in the same dir   --> u can use <Employee /> instead of <Employee> </Employee>
 
 function App() {
-  return (
+  return ( 
     <div className="App">
       <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Employee></Employee>   
         <a
           className="App-link"
           href="https://reactjs.org"
