@@ -1,0 +1,65 @@
+node js ro nasb kun ta command npx nasb beshe
+npx create-react-app hello -->https://reactjs.org/docs/faq-structure.html   
+age error dad npm config delete proxy ro bezan
+faghat filehaye toye source processed mishan tavasote webpack --> vase sor@t
+----------------
+
+khoroji in bood:
+Success! Created hello at /home/sohail/React/hello
+Inside that directory, you can run several commands:
+
+  npm start
+    Starts the development server.
+
+  npm run build
+    Bundles the app into static files for production.
+
+  npm test
+    Starts the test runner.
+
+  npm run eject
+    Removes this tool and copies build dependencies, configuration files
+    and scripts into the app directory. If you do this, you can’t go back!
+
+We suggest that you begin by typing:
+
+  cd hello
+  npm start
+
+Happy hacking!
+
+
+
+
+
+--------------
+npm vase run kardane project hast
+
+
+
+
+dar src index.js ma kar mikunim  --> rendering the app.js file ----> some poeple delete one of those but we keep that ---> so out entire app is gonna built in app.js
+dar public ham index.html hast --> we don't have to touch that --> java script poresh mikune badan
+app.js ha important hast 
+<App /> is the top component in the hierarchy
+everybody will build in App.js but you can do it in index.js too
+
+file haye logo dar public ro pak kun niazi nadarim
+dar src ham dar App.css kulan pak kun
+
+AppTest.js va index.css ro ham pak kun
+
+hala ke ina ro pak kardi bayad jaee ke az ina dare use mishe ham pak beshe vase inke sari befahmi 
+dar terminal npm start ro bezan ta error haro bebini
+deghat kun cd karder bashi be folder e hello
+
+pas dar App.js import e marbot be logo ro pak kun
+dar index.js 
+import reportWebVitals from './reportWebVitals';
+
+
+oon paeen ham reportWebVitals rocall kardim va comment haye balash ro hazf kun
+
+line 7 app.js ham logo ro neveshte tag ro pak kun
+
+index.css ro ham az index.js pak kun
