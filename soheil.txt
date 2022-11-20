@@ -91,6 +91,8 @@ npm install ro bezani regenerate mikune package-lock.json ro
 in pack haro dar source control nakun ---> dar node_modules hame chi oonja nasb hast ---> ino ham mishe generate kar 
 pakesh kun va bad npm install bezani hame dobare nasb mishe! ---> vase hamin chun mitone generate beshe dar source control (git ) nemizarimesh
 
+manifest.json ro ham daresh logo haro pak kun
+
 dar .gitignore har chi benvisi ignore mishe 
 masalan /build ignore mishe chun generetae mishan rahat
 ya masalan /node_modules
@@ -109,3 +111,15 @@ kholase: ---> html+javasript ---> eval to html
 
 
 avalin component ma Employee hast ke ye folder ijad kardim be esme component va bad dar app.js import kardim va dar return tag esh ro neveshtim
+
+compoent ha functionality ro daran  --> each comp is self sustained  --> comp nesting ham okay hast chun dar comp e App omadim comp e Employee ro neveshtim 
+dar app.js mitoni ham jsx (html) benvisi ham logic faghat bayad toye {} bezarish
+
+
+------------------------------------------------------------------------------------
+-props: --> important
+how to pass data from parent to child component ---> from App to Employee masalan
+kholase ba props --> you can pass specific values for different variables ---> masalan Employee Soheil
+age mikhay chandta chiz ro return kuni dar return --> masalan dar return e employee --> az () ghable return use kun
+va deghat kun az <> </> yani fragemment aval va akhar code use kuni yani hmae chi ro bendazi to in chun bayad ye single element return beshe 
+semicolon ro ham bardar
