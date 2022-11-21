@@ -298,7 +298,8 @@ mishe ino to khode Emplyee.js dorost kard ya comp jadid ijad kuni ke manage kuni
 3) passing props from Employe to modal component that will auto fill the user data into that modal
 4) hitting the update button and having that data changed
 
- 
+in 4 marhale ro be moror anjam midim
+
 ino dar google search kun --> https://react-bootstrap.github.io/getting-started/introduction/ 
 
 
@@ -325,3 +326,65 @@ nokte: <Button> </Button> is a custom bootstrap component hast va <button> vase 
 
 -----------------
 create a form inside that modal an useing tailwind to style it
+
+search in google forms in tailwind css --> https://v1.tailwindcss.com/components/forms
+
+
+ino to model body ezafe kun --> hamsho ham nagerefrim ye meghdarisho gereftim az site e bala ---> zeman /> ro dar input bezar chun yadesh rafte bezare to site
+
+
+                <form class="w-full max-w-sm">
+                    <div class="md:flex md:items-center mb-6">
+                        <div class="md:w-1/3">
+                        <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="name">
+                            Full Name
+                        </label>
+                        </div>
+                        <div class="md:w-2/3">
+                        <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="name" type="text" value="Jane Doe"/>
+                        </div>
+                    </div>
+                
+                    <div class="md:flex md:items-center">
+                        <div class="md:w-1/3"></div>
+                        <div class="md:w-2/3">
+                        <button class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+                            Sign Up
+                        </button>
+                        </div>
+                    </div>
+                </form>
+
+
+
+jaye class ham bezar className chun react warning mide vali goya az ye version 16 be bad nabayd error bede vali bara man mide --> serach kardam mige convetion react hast in
+jaye for ham fekkunam htmlfor bayad bezari
+
+
+hala Full name e ke ninput migire ro byad bedi be onvan role e on Exmployee
+
+
+
+on div e marbot be Full name ro copy kun va vase Role ham ijad kun
+
+jaye singUp button ro ba buttun blue e avaz kun
+yani sign up ro div esh ro kulan pak kun ---> hala button html e bezar ke ghablan dashtim --> ama chejoori html button ro be form associate kunim? motmaen nistam ke bootstrap button yani <Button> in ghabelyato dare ya na!
+pas benvis <button form="id-tag-e-form-ro-inja-bezar>  age tag e formet ham id nadare behesh bede ye id
+
+
+kholase dar EditEmployee.js dar modal footer button khodesho pak kun va ino bezar
+<button form='editModal' className=''>Update</button>
+className ro ham ba tailwind css por kun --> az doc esh begard nemone copy kun  ---> https://v1.tailwindcss.com/components/buttons
+
+alan dar site agar update kuni site referesh mishe kulesh ta beroz beshe albate hano chizi set nemishe
+
+vase inke size ha consistent bashan hamoon buttun jadid html e to copy kun va buttun close se bootstrap ro pak kun va jash az copy shode Update use kun ta size ha yeksan beshan
+
+
+
+ta alan kuli error dar console dari
+Warning: You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`.
+ke yani toye box nemitooni type kuni
+
+
+
