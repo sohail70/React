@@ -140,3 +140,59 @@ hooks alow to use feature without class ---> we prefer to use functions with hoo
 ------------------------------
 Tailwind Css ro azash mikhaym use kunim --> google search kun : tailwind css installation react
 
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+
+and then add the path --> just follow the website ---> ye file tailwind.config.js ijad shode barat ke boro tosh va inaro onja copy kun jaye oon chizi ke hast:
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+
+
+
+code bala dar content faghat miad kule js file haye toye src ro migire hamin
+
+
+hala in 3 khat ro copy kun dar App.css ya index.css .ke miad tamame tailwind styling ha ro neshoon mide
+chun ma index.css ro pak kardim mizarimesh to App.css
+
+hala npm run start ro kezadi  badesh mituni dar App.js et be in sabk style ezafe kuni:
+
+export default function App() {
+  return (
+    <h1 className="text-3xl font-bold underline">
+      Hello world!
+    </h1>
+  )
+}
+
+
+
+kholase:
+install - initialize -tell where your js files are - add tailwind directive to your css 
+
+
+alan masalan bor o dar App.js ye chizi be div e className="App  (inja ezafe mishe)"  ezaf kun
+
+
+-----------------------------------
+we don't need app component specific styling so change the name of App.css and index.css ---> dar App.js ham import ro dorst kun
+
+
+---------------------------------
+tailwind css omade core css roles ro gerefte va ba class jaygozinesh karde --> dar doc eshon dar search benvis background color ---> ye seri class mibini ke properties ro mitoni be different element vasl kuni --> hala ma khode properties ro nemidim balke class ro midim
+ya margin ro search kun bebin ya display
+masalan margin-top: 0px;  mishe mt-0
+ya flex ro search kun
+
+
+hala age npm run build ro bezani ina tabdil mishe be code haye css asli shon --> dar main---.css bebin

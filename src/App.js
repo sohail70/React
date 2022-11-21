@@ -1,4 +1,4 @@
-import './App.css';
+import './index.css';
 import Employee from './components/Employee'; // ./ means search in the same dir   --> u can use <Employee /> instead of <Employee> </Employee>
 import {useState} from 'react'; //chera Employee ro to {} nazashti chun toye employee export default karde bodim
 function App() {
@@ -11,7 +11,7 @@ function App() {
   // vase inke code js bezani toye paeen bayad ono to {} bezari
   //alabte deghat kun ke hamishe bayad single element bargardoni dar return pas kule tag haro bendaz to <> </> ya tag e div
   // har baskh code js ro to {} bezar
-    <div className="App">
+    <div className="App bg-red-300">
       {console.log("we are inside the return")} 
       {showEmployess ?
       <>
