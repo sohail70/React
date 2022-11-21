@@ -134,3 +134,8 @@ import kardim useState ro dar App.js va ba setRole state ijad kardim --> state i
 ------------------------------
 useState is an example of a hook --> there are other hooks to introduce functionality into our component very easily
 hooks alow to use feature without class ---> we prefer to use functions with hooks 
+
+
+
+------------------------------
+Tailwind Css ro azash mikhaym use kunim
