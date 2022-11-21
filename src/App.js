@@ -9,7 +9,7 @@ function App() {
   //! number one rule of state is you never assign a value to the var directly you always go through set function like setRole in below
   const [role,setRole] = useState('dev'); //role ye state hast na variable , setRole func hast va role ro set mikune - use set ham meghdare default migire ke dev dadim
   let role2='dev';
-  const [employees,setEmployess] = useState(
+  const [employees,setEmployees] = useState(
       [
         {
           id :1,
@@ -44,6 +44,7 @@ function App() {
         },
 
         {
+          id:5,
           name: "Cyclops",
           role:"Expert",
           img:"https://grantland.com/wp-content/uploads/2014/04/cyclops-hp.gif?w=706",
@@ -51,6 +52,7 @@ function App() {
         },
 
         {
+          id:6,
           name: "Jane",
           role:"Expert",
           img: "https://static.tvtropes.org/pmwiki/pub/images/jeangrey.jpg",
@@ -61,6 +63,21 @@ function App() {
   );
   
   
+  function updateEmployee(id,newName , newRole) // id? which employee to update . jaye newName va newRole mitoni object ham bezri
+  {
+    console.log('updateEmployee inside App.js');
+    //create a new variable and assign it with setEmployees
+    const updatedEmployess = employees.map((employee)=>{
+      if(id===employee.id)
+      {
+        return {...employee , name: newName , role: newRole}; //... to expand any attributes of employee and put it in curly braces which is a new object --> ... is spreading if you wanna search - age doost nadari az ... use kuni bayad hame property har o benvisi masalm img:newImg ke bayad newImg ro ham be onvan parameter dar func begiri. albate mitoni benvisi img:employee.img ke hamoon ghabli bemoone vali nokte ine ke age ... nazari bayad hame ro bezari
+      }
+      else{
+        return employee;
+      }
+    }); 
+    setEmployees(updatedEmployess);
+  }
   
   console.log("We are about to list the employees");
   const showEmployess = true; //ghable return mishe var ham sakht - 
@@ -81,9 +98,9 @@ function App() {
 
           <div className='flex flex-wrap justify-center'>
             {employees.map( (employee)=>{
-              console.log(employee);
+              //console.log(employee);
               console.log(uuidv4());
-                return (<Employee key={uuidv4()}  name ={employee.name} role ={employee.role} img ={employee.img} alt={employee.alt}/> ); //return age multiple line bod dar () bezaresh vagarna niazi nist
+                return (<Employee keyGuid={uuidv4()} key={employee.id} id={employee.id} name ={employee.name} role ={employee.role} img ={employee.img} alt={employee.alt} updateEmployee={updateEmployee}/> ); //return age multiple line bod dar () bezaresh vagarna niazi nist
               } ) }         
           </div>
       </>

@@ -394,6 +394,7 @@ in mishe pass kardan value az Employee.js be EditEmployee.js ---> passing down d
 next step --> store the new name and role
 
 
+
 kholase in do khat ro dar EditEmployee.js mizarim
     const [name, setName] = useState(props.name); 
     const [role, setRole] = useState(props.role);
@@ -420,3 +421,19 @@ bayad be structure deghat kuni :
 alan App.js darim ke tosh Employee hast va toye Employee , EditEmployee hast ke button dare va form
 dobare yad avari mikunim ke props nabayad change beshse tavasote component even in the modal component --> vase hamin state dorost kardim  ---> engari mesle copy hast dg yani pointer ee nist
 pas chejoori az child props e parent ro avaz kunim --> bayad callback func pass kunim ta stat e original component ro taghir bedim
+
+kholase dar App.js function updateEmployee ro ezafe kun
+tag e Employee ro ham on func ro bezar ke pass down kune be Employee va hala dar Employee.js ham pass down kun be EditEdmployee
+dar enteha ham boro dar EditEmployee va vase Update button onClick bezar ya ye kar behtar kun --> vase tag e form onSubmit bezar ke ye arrow func hast
+data e form ro ham be onvan vorodi midim be arrow function --> masalan e ro be onvane vorodi midim ke data e form ro begire
+e.preventDeafult ---> in prevent page refresh mikune
+
+
+props.updateEmployee(props.id,name,role); miad berooz mikune ama id chie ? bayad dar App.js vase employee hat id bezari to easily identify them masalan addad bezar id:1 va 2 va ..
+hala ke khodet id gozashti dg niazi be guid nist age khasti hazfesh kun
+
+kholase in khat ro ezafe kun id={employee.id} va dar Employee.js ham haminkaro bokon monteha props. ghablesh yade nare
+
+hala age dar site esm ro avaz kuni in be App.js mirese!
+loop thourhg kun dar App.js ta id morede nazar ro peyda kuni va update kuni
+kholase func e function updateEmployee(id,newName , newRole) dar App.js ro check kun
