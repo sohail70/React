@@ -120,10 +120,11 @@ dar app.js mitoni ham jsx (html) benvisi ham logic faghat bayad toye {} bezarish
 -props: --> important
 how to pass data from parent to child component ---> from App to Employee masalan
 kholase ba props --> you can pass specific values for different variables ---> masalan Employee Soheil
-age mikhay chandta chiz ro return kuni dar return --> masalan dar return e employee --> az () ghable return use kun
+age mikhay chandta chiz ro return kuni dar return --> masalan dar return e employee --> az () ghable return use kun 
 va deghat kun az <> </> yani fragemment aval va akhar code use kuni yani hmae chi ro bendazi to in chun bayad ye single element return beshe 
 semicolon ro ham bardar
 
+deghat kun return age statement badesh to chnadta line bod yani multiple line khati benvisi bayad () bezari vagarna niazi nist
 
 props are not meant to be changed in child copmponet
 -------------------------------------------------------------------------------------
@@ -260,3 +261,29 @@ ta lan aks gozashtim
 how to work with arrays or list of data (slightly different data)
 so use a loop and the data comes from an array
 datas are coming from the states but it could easily be substitued out to come from an API --> pas ba inke alan hard code mikunim vali badan ok mishe
+
+step1 --> take all the data and move it to the top in a single var
+step2 --> use loop --> use map
+
+
+
+az employees.map() use mikunim ---> ye func roye array hast ke ejaze mide roye array iterate kunim
+
+
+
+ye warning e mide --> react-jsx-dev-runtime.development.js:87 Warning: Each child in a list should have a unique "key" prop.
+react keeps track of all the data on the page va react mifahme ke chiu mikhay update kuni age barash id bezari. id vase identify kardan each element in the array hast 
+pas id khoobe ke age update esh kardi majboor nashi kole page ro update kuni pas behtare vase employee dar App.js ye attribute e key bezari
+pas masalan key={employee.id}  ro bezar kenare name dar Employee in App.js var dar bala ham vase har karmand ye id bezar masalan 1 va 2 va 3 va ...
+vali khoob ye ravesh behtar hast be esme guid --> globally unique identifier
+npm install uuid --> universally unique id ke hamon guid hast\
+
+bad ino jaye key bala benvis: key={uuidv4()} 
+import ham yadet nare --> import {v4 as uuid4} from 'uuid';
+
+
+har bar ke benvisi ye id behet mide
+console.log(uuidv4());
+
+
+-------------------------------------------------------------------------------------------
