@@ -384,7 +384,9 @@ vase inke size ha consistent bashan hamoon buttun jadid html e to copy kun va bu
 
 ta alan kuli error dar console dari
 Warning: You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`.
-ke yani toye box nemitooni type kuni
+ke yani toye box nemitooni type kuni --> readonly shode va mige deafult value bezaresh yani value ro bokun deafultValue --> onjaee ke neveshte value="JaneDoe" ro bokon defaultValue
 
+aval hamishe bayad az value use kuni  va kenaresh onChange={} event handler bezari vase update shodanseh --> dar EditEmployee.js
 
-
+value ham bayad injori bahse value={props.name} va dar paeen value={props.role} bayad bashe va dar App.js dar tag e EditEmployee attribute name va role ro por kuni --> props ro ham be onvane input be function e EditEmployee bede
+in mishe pass kardan value az Employee.js be EditEmployee.js ---> passing down data
