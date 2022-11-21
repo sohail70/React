@@ -183,7 +183,7 @@ install - initialize -tell where your js files are - add tailwind directive to y
 
 alan masalan bor o dar App.js ye chizi be div e className="App  (inja ezafe mishe)"  ezaf kun
 
-
+masalan <div className="App bg-red-300">
 -----------------------------------
 we don't need app component specific styling so change the name of App.css and index.css ---> dar App.js ham import ro dorst kun
 
@@ -196,3 +196,67 @@ ya flex ro search kun
 
 
 hala age npm run build ro bezani ina tabdil mishe be code haye css asli shon --> dar main---.css bebin
+
+
+------------------------------------
+use some tailwind examples
+dar Employee.js bala ro comment kun va Example 2 benvis
+dar docs ---> utility first fundamentals
+
+in code ro dar Employee bezar:
+
+<div class="py-8 px-8 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
+  <img class="block mx-auto h-24 rounded-full sm:mx-0 sm:shrink-0" src="/img/erin-lindford.jpg" alt="Woman's Face">
+  <div class="text-center space-y-2 sm:text-left">
+    <div class="space-y-0.5">
+      <p class="text-lg text-black font-semibold">
+        Erin Lindford
+      </p>
+      <p class="text-slate-500 font-medium">
+        Product Engineer
+      </p>
+    </div>
+    <button class="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2">Message</button>
+  </div>
+</div>
+
+
+
+zemnan code bala ye irad dare chun image bayad self closing bashe ke ina yadeshon raft vali to dar enteha bezar: />
+
+
+
+
+mikhaym vaghti employee ha ziad shodan warp beshe o ina ---> pas Employee haro bendaz to div dar App.js va flex kun
+so if there is not enough room it makes them change appropiately
+
+
+injoori:
+          <div className='flex flex-wrap'>
+            <Employee name="zart" role="intern"></Employee> 
+            <Employee name="abby" role={role}/>  
+            <Employee name="sam"/>
+          </div>
+
+
+alan age zoom bokuni taghir ro mibini
+
+flex Layout ro search kun dar doc tailwind
+
+
+
+be Employee ye m-2 ham ezaf kun ta margin ezafe beshe
+auto margin e mx-auto ro ham hazf kun
+
+
+attribute img ro ba link bezar va bad dar Employee.js ham karhaye lazem ro baraye use kardan az img anjam bede
+
+vase circle kardan aks ha harchand ham ke rectangle img bashan dar Employee dar tag e img inaro ezaf kun:  object-cover rounded-full h-[100px] w-[100px]
+
+
+-------------------- 
+ta lan aks gozashtim
+
+how to work with arrays or list of data (slightly different data)
+so use a loop and the data comes from an array
+datas are coming from the states but it could easily be substitued out to come from an API --> pas ba inke alan hard code mikunim vali badan ok mishe

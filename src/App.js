@@ -11,19 +11,26 @@ function App() {
   // vase inke code js bezani toye paeen bayad ono to {} bezari
   //alabte deghat kun ke hamishe bayad single element bargardoni dar return pas kule tag haro bendaz to <> </> ya tag e div
   // har baskh code js ro to {} bezar
-    <div className="App bg-red-300">
+    <div className="App">
       {console.log("we are inside the return")} 
       {showEmployess ?
       <>
-        <input type="text" onChange={(e)=>{
-          console.log(e.target.value);
-          //role2 = e.target.value; ---> in javab nemide yani baes nemishe Employe dovom yani abby set beshe --> solution use kardan az state hast ke bala import kardim va ba useState ijadesh kardim va ba setRole set esh mikunim --> state chun be UI vasl mishe vali variable na
-          setRole(e.target.value);
-        }} 
-        />
-          <Employee name="zart" role="intern"></Employee> 
-          <Employee name="abby" role={role}/>  
-          <Employee name="sam"/>
+          <input type="text" onChange={(e)=>{
+            console.log(e.target.value);
+            //role2 = e.target.value; ---> in javab nemide yani baes nemishe Employe dovom yani abby set beshe --> solution use kardan az state hast ke bala import kardim va ba useState ijadesh kardim va ba setRole set esh mikunim --> state chun be UI vasl mishe vali variable na
+            setRole(e.target.value);
+          }} 
+          />
+
+          <div className='flex flex-wrap justify-center'>
+            <Employee name="Logan" role="Expert" img="https://hips.hearstapps.com/digitalspyuk.cdnds.net/16/21/1464175888-hugh-jackman-muscles-claws-in-the-wolverine.jpg?crop=0.628xw:1.00xh;0.194xw,0&resize=480:*" ></Employee> 
+            <Employee name="abby" role={role} img="https://hips.hearstapps.com/digitalspyuk.cdnds.net/16/21/1464175888-hugh-jackman-muscles-claws-in-the-wolverine.jpg?crop=0.628xw:1.00xh;0.194xw,0&resize=480:*"/>  
+            <Employee name="sam" img="https://hips.hearstapps.com/digitalspyuk.cdnds.net/16/21/1464175888-hugh-jackman-muscles-claws-in-the-wolverine.jpg?crop=0.628xw:1.00xh;0.194xw,0&resize=480:*"/>
+            <Employee name="sam" img="https://hips.hearstapps.com/digitalspyuk.cdnds.net/16/21/1464175888-hugh-jackman-muscles-claws-in-the-wolverine.jpg?crop=0.628xw:1.00xh;0.194xw,0&resize=480:*"/>
+            <Employee name="sam" img="https://hips.hearstapps.com/digitalspyuk.cdnds.net/16/21/1464175888-hugh-jackman-muscles-claws-in-the-wolverine.jpg?crop=0.628xw:1.00xh;0.194xw,0&resize=480:*"/>
+            <Employee name="sam" img="https://hips.hearstapps.com/digitalspyuk.cdnds.net/16/21/1464175888-hugh-jackman-muscles-claws-in-the-wolverine.jpg?crop=0.628xw:1.00xh;0.194xw,0&resize=480:*"/>
+            
+          </div>
       </>
       : <p>you are not authorized to see the employee</p>}
     </div>
