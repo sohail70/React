@@ -287,3 +287,33 @@ console.log(uuidv4());
 
 
 -------------------------------------------------------------------------------------------
+creating modal ---> pop up window ijad ---> edit ---> it won't change the original data until you hit update or complete or what every
+
+don't create it from scratch ---> use react bootstrap --> it gives us component --> one of them is a modal
+
+mishe ino to khode Emplyee.js dorost kard ya comp jadid ijad kuni ke manage kuni bakhshe modal chizha ro kulan
+
+1) create modal from react bootstrap
+2) styling and submitting with a button
+3) passing props from Employe to modal component that will auto fill the user data into that modal
+4) hitting the update button and having that data changed
+
+ 
+ino dar google search kun --> https://react-bootstrap.github.io/getting-started/introduction/ 
+
+
+
+
+ npm install react-bootstrap bootstrap
+ ino ham dar index.js bezar (index.js outer most javascrippt file hast) --->import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+dar compoent folder EditEmployee.js ro dorost kun
+
+va bad https://react-bootstrap.github.io/components/modal/
+
+az static_backdrop use mikunim ta vaghti kharej click kardim kharej nashe! ---> ghemate render akhare khat ro nagir --> paste kun to EditEmployee
+
+
+alan age deghat kuni khode in modal ye button misaze vali Employee comp ma ham khodesh ye button dare
+hala boro dar Employee.js <EditEmployee /> ro bezar oon vasat
