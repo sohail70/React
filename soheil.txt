@@ -390,3 +390,33 @@ aval hamishe bayad az value use kuni  va kenaresh onChange={} event handler beza
 
 value ham bayad injori bahse value={props.name} va dar paeen value={props.role} bayad bashe va dar App.js dar tag e EditEmployee attribute name va role ro por kuni --> props ro ham be onvane input be function e EditEmployee bede
 in mishe pass kardan value az Employee.js be EditEmployee.js ---> passing down data
+
+next step --> store the new name and role
+
+
+kholase in do khat ro dar EditEmployee.js mizarim
+    const [name, setName] = useState(props.name); 
+    const [role, setRole] = useState(props.role);
+
+    va vlaue={name}
+    va value={role} ham oon paeen mizari1
+
+
+hala mitunim onChange ro bezarim ta in state ro update kunim --> bezar kenar value
+
+onChange ham injoorie ---> onChange={(e)=>{setName(e.target.value)}}  ---> ke ye arrow func hast ke e vorodi dare va harchi varedesh beshe ro mde be setName vase taghire state
+
+hala mitoni to form benvisi 
+kholase --> ye state var tarif kardim - load the default value az props kardim va form ro taghir dadi va keep track kardim most recent change ro
+
+
+-----------------------------------
+Finishing modals:
+
+update the data showing in the main page
+for a single page application we wanna avoid any page refresh whenever we can and we want the data to be updated dynamically changed in state --> ama alan bade zadan update refresh mishe
+hala chejoori data e ke dar state e name va role dar EditEmployee.js store kardim ro bahash berim data mojod dar App.js ro bahash beroz kunim yani state e employees ro chejoori bero kunim?
+bayad be structure deghat kuni :
+alan App.js darim ke tosh Employee hast va toye Employee , EditEmployee hast ke button dare va form
+dobare yad avari mikunim ke props nabayad change beshse tavasote component even in the modal component --> vase hamin state dorost kardim  ---> engari mesle copy hast dg yani pointer ee nist
+pas chejoori az child props e parent ro avaz kunim --> bayad callback func pass kunim ta stat e original component ro taghir bedim
