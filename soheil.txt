@@ -138,4 +138,5 @@ hooks alow to use feature without class ---> we prefer to use functions with hoo
 
 
 ------------------------------
-Tailwind Css ro azash mikhaym use kunim
+Tailwind Css ro azash mikhaym use kunim --> google search kun : tailwind css installation react
+
