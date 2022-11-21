@@ -317,3 +317,11 @@ az static_backdrop use mikunim ta vaghti kharej click kardim kharej nashe! ---> 
 
 alan age deghat kuni khode in modal ye button misaze vali Employee comp ma ham khodesh ye button dare
 hala boro dar Employee.js <EditEmployee /> ro bezar oon vasat
+
+ama benazarm behtare hamoon button e ke dar Employee.js hast ro cut kuni bezari to modal dar EditEmployee.js faghat yade bashe onClick esh ro ezafe kuni ke click behse --> mitoni az button ghabli dar modal negah kuni
+nokte: <Button> </Button> is a custom bootstrap component hast va <button> vase html hast ke ma az html e use mikunim ke farghi nadare
+
+
+
+-----------------
+create a form inside that modal an useing tailwind to style it
