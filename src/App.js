@@ -2,6 +2,7 @@ import './index.css';
 import Employee from './components/Employee'; // ./ means search in the same dir   --> u can use <Employee /> instead of <Employee> </Employee>
 import {useState} from 'react'; //chera Employee ro to {} nazashti chun toye employee export default karde bodim
 import {v4 as uuidv4} from 'uuid';
+import AddEmployee from './components/AddEmployee';
 
 
 
@@ -78,6 +79,25 @@ function App() {
     }); 
     setEmployees(updatedEmployess);
   }
+
+  function newEmployee(name,role,img){
+    const newEmp = {
+      id: uuidv4(), //az data base miad in property ha vali felan hardcode mikunim
+      name: name,
+      role: role,
+      img: img,
+    };
+    setEmployees([...employees , newEmp]); //employee haye ghabli bayad bashan + jadide
+  }
+
+
+
+
+
+
+
+
+
   
   console.log("We are about to list the employees");
   const showEmployess = true; //ghable return mishe var ham sakht - 
@@ -103,6 +123,8 @@ function App() {
                 return (<Employee keyGuid={uuidv4()} key={employee.id} id={employee.id} name ={employee.name} role ={employee.role} img ={employee.img} alt={employee.alt} updateEmployee={updateEmployee}/> ); //return age multiple line bod dar () bezaresh vagarna niazi nist
               } ) }         
           </div>
+
+          <AddEmployee newEmployee={newEmployee}/> {/*deghat kun invoke nemikunim fun ro balke faghat esmesho miferestim to be onvane props*/} 
       </>
       : <p>you are not authorized to see the employee</p>}
     </div>
