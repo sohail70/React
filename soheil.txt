@@ -519,3 +519,80 @@ injoori har chi ke dakhle tag e Header hast --> ke felan alan Employees hast mia
 dar paeen </Disclosure> benvis {props.children}
 ke dar vaghe chi mishe --> engari tag e <Employees/> insert mishe be entehaye function e Header.js
 deghat kun bayad ba <> </> surround kuni chun {props.children} gozashti ke shod do ta element ke bayad single element return beshe
+
+kholase --> az props dar Header.js use kun ta Employees ro bendazi tosh zeman az fragment ham bayad use kuni --> yani <> </>
+
+
+--------------------
+rounting inside of react --> differetn url path to go to different pages ---> we need to install react router dom
+npm install react-router-dom
+hala 3 ta chiz ro bayad import kuni
+import {BrowserRouter, Routes, Route } from 'react-router-dom'
+
+hala dar App.js hame chio surround mikunim toye tag e BrowserRouter --> header ro ha hamintoor chun ba inkar header NavLink capabilities migire
+  <BrowserRouter>
+    <Header>
+      <Employees/>
+    </Header>
+  </BrowserRouter>
+
+  hala tag e Routes ro benvis to tag ha
+
+  dar kul sakhtar vase ijad URL path ine:
+  toye element component bayad bezari ---> masalan Employees page ro bezar
+
+  <BrowserRouter>
+    <Router>
+      <Route path='/' element={}>
+      <Route>
+    </Router>
+  </BrowserRouter>
+
+  age jaye path='/' bezari path='/employees' masalan oonvaght home page blank mishe va bayad dar URL browser benvisi http://localhost:3000/employees/# ta bebini xmen haro
+
+
+  ye page dg dorost kun be esme customers.js 
+
+  kholase App.js et mishe in:
+
+import './index.css';
+import Header from './components/Header'
+import Employees from './pages/Employees';
+import {BrowserRouter, Routes, Route } from 'react-router-dom'
+import Customers from './pages/Customers'
+
+
+function App() {
+  
+  return (
+  <BrowserRouter>
+  <Header>
+    <Routes>
+      <Route path='/employees' element={<Employees/>}/>
+      <Route path='/customers' element={<Customers/>}/>
+    </Routes>
+
+    
+    </Header>
+  </BrowserRouter>
+  );
+}
+
+export default App;
+
+
+
+hala dar nahayat Header ro ba in link ha mikhaym update kunim
+
+const  navigation ro bayad set kuni ba href eshon
+
+const navigation = [
+  { name: 'Employees', href: '/employees', current: true },
+  { name: 'Customers', href: '/customers', current: false },
+  { name: 'Projects', href: '#', current: false },
+  { name: 'Calendar', href: '#', current: false },
+]
+
+
+alan ok shode va mitooni az tarighe nav bar beri be page haye mokhtalef ama ye giri ke hast ine ke vaghti masalan miri to page e customer dar navbar highligh roye Employess hast hamchenan
+in bekhater ine ke az link html yani "a" dari use mikuni
