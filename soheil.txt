@@ -453,3 +453,7 @@ this is 3 layers nested:
 App --> EMployee --> EditEmployee  
 
 age layer ha nested ziad bood behtare component befresti jaye property
+
+
+EditEmployee ro pass kun be Employee dar  App.js
+const editEmployee = <EditEmployee id=.. name...  role.. updateEmployee.. /> ro benvis

@@ -50,8 +50,12 @@ function Employee(props){
             </p>
         </div>
         
-        <EditEmployee name={props.name} role={props.role} updateEmployee={props.updateEmployee} id={props.id}/>
+        {/* in avse approach ghadimi bod ke data pass kardim az parent be child */}
+        {/* <EditEmployee name={props.name} role={props.role} updateEmployee={props.updateEmployee} id={props.id}/> */}
         
+        {/* new Approach */}
+        {props.editEmployee}
+
     </div>
   </div> );
 }

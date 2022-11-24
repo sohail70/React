@@ -3,7 +3,7 @@ import Employee from './components/Employee'; // ./ means search in the same dir
 import {useState} from 'react'; //chera Employee ro to {} nazashti chun toye employee export default karde bodim
 import {v4 as uuidv4} from 'uuid';
 import AddEmployee from './components/AddEmployee';
-
+import EditEmployee from './components/EditEmployee';
 
 
 function App() {
@@ -115,14 +115,26 @@ function App() {
             setRole(e.target.value);
           }} 
           />
-
-          <div className='flex flex-wrap justify-center'>
+          {/* Approach ghadimi : passing data from parent to child*/}
+          {/* <div className='flex flex-wrap justify-center'>
             {employees.map( (employee)=>{
               //console.log(employee);
               console.log(uuidv4());
                 return (<Employee keyGuid={uuidv4()} key={employee.id} id={employee.id} name ={employee.name} role ={employee.role} img ={employee.img} alt={employee.alt} updateEmployee={updateEmployee}/> ); //return age multiple line bod dar () bezaresh vagarna niazi nist
               } ) }         
-          </div>
+          </div> */}
+
+          {/* Approach jadid : passing component from parent to child*/}
+          <div className='flex flex-wrap justify-center'>
+  
+            {employees.map( (employee)=>{
+              {/* variable editEmployee ro hala mikhaym pass kunim dar chand khat paeen tar - zeman deghat kun EditEmployee ro ham import kuni */}
+              const editEmployee = <EditEmployee name={employee.name} role={employee.role} updateEmployee={updateEmployee} id={employee.id}/>  
+              //console.log(employee);
+              console.log(uuidv4());
+                return (<Employee keyGuid={uuidv4()} key={employee.id} id={employee.id} name ={employee.name} role ={employee.role} img ={employee.img} alt={employee.alt} editEmployee={editEmployee}/> ); //return age multiple line bod dar () bezaresh vagarna niazi nist - zeman deghat kun ke editEmployee yek component hast ke pass kardim
+              } ) }         
+          </div>         
 
           <AddEmployee newEmployee={newEmployee}/> {/*deghat kun invoke nemikunim fun ro balke faghat esmesho miferestim to be onvane props*/} 
       </>
