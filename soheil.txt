@@ -509,3 +509,13 @@ be rahati ye page dorost kardim va az tarafi code emon ham organize tar shood
 
 nokte dovom : har page nabayad ye header tosh bashe balake Header bayad yeki bashe to hame yani mikhaym automatic bashe vase tamame page ha va ro har kodum nazarim1
 pass oon header e balalye
+so surround the <Employees/> tag inside a header in App.js:
+<Header> <Employees/> </Header> 
+yadet nare Header e dakhlele Employees.js dar folder pages ro ham pak kuni
+
+Ama alan unfortunately kar nemikune bayad Header.js ro dorost kuni
+bayad vorodi func Header ro tosh benvisi props
+injoori har chi ke dakhle tag e Header hast --> ke felan alan Employees hast miad to props  hala in props ro ke dar Header.js daryaft kardi bayad tamame child hash ke alan faghat Employees hast ro render kuni
+dar paeen </Disclosure> benvis {props.children}
+ke dar vaghe chi mishe --> engari tag e <Employees/> insert mishe be entehaye function e Header.js
+deghat kun bayad ba <> </> surround kuni chun {props.children} gozashti ke shod do ta element ke bayad single element return beshe

@@ -106,7 +106,6 @@ function Employees() {
   //alabte deghat kun ke hamishe bayad single element bargardoni dar return pas kule tag haro bendaz to <> </> ya tag e div
   // har baskh code js ro to {} bezar
     <div className="App bg-gray-300 min-h-screen">
-      <Header />
 
       {console.log("we are inside the return")} 
       {showEmployess ?

@@ -1,9 +1,14 @@
 import './index.css';
+import Header from './components/Header'
 import Employees from './pages/Employees';
 
 function App() {
   
-  return (<Employees/>);
+  return (
+  <Header>
+    <Employees/>
+  </Header>
+  );
 }
 
 export default App;
