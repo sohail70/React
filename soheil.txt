@@ -615,3 +615,19 @@ dar Header.js --> className ={({isActive})=>{}} ---> chun NavLink Active bodan y
 zeman navlink prophash href nadare balke "to" dare ---> pas benvis to={item.href}
 
 zeman age dar App.js header et biroone BrowserRouter bashe inja kuli error mide
+
+
+
+-------------------------------------------------------------
+clean up Header :
+vase drop down mobile ham haminkara ro bokon faghat style e block ro negah dar ke drop down tor behse va jaye Disclosue.botton ham bezar NAvlink
+
+dar moreder disclosure dar site e headless UI bekhoon
+
+
+dar Employess.js in kaht     <div className="App bg-gray-300 min-h-screen">
+onaee ke dakhele quotation hast ro bebar ro Header bezar
+
+yani dar Header.js:  <div className='bg-gray-300 min-h-screen'>{props.children}</div>
+hala my-2 ro dar Employees.js hazf kun
+va dar Header.js ezafe kun be in padding ro    <div className='bg-gray-300 min-h-screen px-2 py-2'>{props.children}</div>

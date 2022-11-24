@@ -50,7 +50,7 @@ export default function Header(props) {
                         
                         className ={({isActive})=>{
                             // console.log(item.href + ' ' + isActive);
-                            return  ('px-3 py-2 rounded-md text-sm font-medium no-underline' + (isActive?  'text-gray-300 hover:bg-gray-700 hover:text-red' : 'bg-gray-900 text-white no-underline'));
+                            return  ('px-3 py-2 rounded-md text-sm font-medium no-underline'+(isActive?  'text-gray-300 hover:bg-gray-700 hover:text-red' : 'bg-gray-900 text-white'));
                         }}
                       >
                         {item.name}
@@ -68,7 +68,7 @@ export default function Header(props) {
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
 
-                {/* Profile dropdown */}
+                {/* Profile dropdown---> be in felan niaz nadarim vali bezar bashe chun profile drop down ro pak kardim aksesho */}
                 <Menu as="div" className="relative ml-3">
                   <div>
                     <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
@@ -126,25 +126,30 @@ export default function Header(props) {
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pt-2 pb-3">
               {navigation.map((item) => (
-                <Disclosure.Button
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block px-3 py-2 rounded-md text-base font-medium'
-                  )}
-                  aria-current={item.current ? 'page' : undefined}
-                >
-                  {item.name}
-                </Disclosure.Button>
+                    <NavLink
+                    key={item.name}
+                    // href={item.href}
+                    to={item.href} //NavLink mesle tag e 'a' nist ke href bede balke to mide
+                    
+                    // className={classNames(
+                    //   item.current ? 'bg-gray-900 text-white no-underline' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                    //   'px-3 py-2 rounded-md text-sm font-medium no-underline'
+                    // )}
+                    
+                    className ={({isActive})=>{
+                        // console.log(item.href + ' ' + isActive);
+                        return  ('block px-3 py-2 rounded-md text-base font-medium no-underline'+(isActive ?  'text-gray-300 hover:bg-gray-700' : 'bg-gray-900 text-white'));
+                    }}
+                    >
+                    {item.name}
+                    </NavLink>
               ))}
             </div>
           </Disclosure.Panel>
         </>
       )}
     </Disclosure>  
-    {props.children}
+    <div className='bg-gray-300 min-h-screen px-2 py-2'>{props.children}</div>
     <footer>A footer</footer>
     </>
   )

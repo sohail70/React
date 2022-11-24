@@ -120,7 +120,7 @@ function Employees() {
           </div> */}
 
           {/* Approach jadid : passing component from parent to child*/}
-          <div className='flex flex-wrap justify-center my-2'>
+          <div className='flex flex-wrap justify-center '>
   
             {employees.map( (employee)=>{
               {/* variable editEmployee ro hala mikhaym pass kunim dar chand khat paeen tar - zeman deghat kun EditEmployee ro ham import kuni */}
