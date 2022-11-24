@@ -457,3 +457,55 @@ age layer ha nested ziad bood behtare component befresti jaye property
 
 EditEmployee ro pass kun be Employee dar  App.js
 const editEmployee = <EditEmployee id=.. name...  role.. updateEmployee.. /> ro benvis
+
+
+-------------------------------------------
+placing a navigation bar at the top using tailwind ---> use existing code --> tailwind nav bar ro serach kun dar google  -->https://tailwindui.com/components/application-ui/navigation/navbars
+tailwind UI is a payed thing --> pay to get some prebuild component that work really well
+tailwind UI ro baz kun avali pooli nist begiresh
+oon bala html ro tabdil kun be react ke dg niazi nabashe class ro be className tabdil kuni 3 sa@t :)
+inaro cop bezan bezar to Header.js
+esme func ro az example be Header taghir bede va ayazan hamonja export karder ke dg niazi nist oon paeen export kuni
+
+hala bezaresh to App.js bezar balaye employee ha --> header bayad bala bashe dg
+import ham bokonesh
+error mide chun ye seri module nadare --> ba npm nasb kun --> @headlessui/react for react va @heroicons/react for react ro nadare
+pas benvis npm install @headlessui/react 
+va npm install @heroicons/react
+
+
+
+age dar kul ba in hal nemikuni az tailwind css Header ye seri example hast negah kun --> ona drop down ham dare taze -->https://tailwindui.com/components/marketing/elements/headers
+dar Header.js no-underline bezar vase item ha va img ha ro ba ctrl+click check kun va pak kun --> kulan section do ta img bala ro pak kun aslan mnemikhaymeshoon
+
+rasti oon input ro ke ghadim gozashte bodi ro ham hazf kun
+
+zeman dar App.js ino gozashtim
+  <div className="App bg-gray-300 min-h-screen">
+
+oon min-h-screen ro nazari faghat ye ghesmati ro gray mikune
+-------------
+dealing with pages --> pages vs component
+and second we wanna talk about navigation and routing inside of react --> yani active kardan linkhaye navbar --> to switch pages
+
+dar src --> folder dorost kun be emse pages --> ye file ijad kun be esme Employees.js va info haye toye App.js ro bezar oonja
+mitooni kule App.js ro berizi in to va taghirat bedi:
+jaye import './index.css'; bezar import '../index.css'; chun alan ye folder up shode
+esme func ro az App bokon Employees va export e paeen ro dorost kun
+
+dar nahayat import ha mishe in:
+import '../index.css';
+import Employee from '../components/Employee'; // ./ means search in the same dir   --> u can use <Employee /> instead of <Employee> </Employee>
+import {useState} from 'react'; //chera Employee ro to {} nazashti chun toye employee export default karde bodim
+import {v4 as uuidv4} from 'uuid';
+import AddEmployee from '../components/AddEmployee';
+import EditEmployee from '../components/EditEmployee';
+import Header from '../components/Header'
+
+
+hala kule App.js ro khali kun va faghat ye return dashte bash ke tosh call kun be <Employees/>
+be rahati ye page dorost kardim va az tarafi code emon ham organize tar shood
+
+
+nokte dovom : har page nabayad ye header tosh bashe balake Header bayad yeki bashe to hame yani mikhaym automatic bashe vase tamame page ha va ro har kodum nazarim1
+pass oon header e balalye
