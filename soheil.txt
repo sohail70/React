@@ -444,3 +444,12 @@ kholase func e function updateEmployee(id,newName , newRole) dar App.js ro check
 How to add employee?
 
 mesle bala --> faghat dg niazi nist az Employee begzarim yani az App.js function pass kun mostaghim be AddEmployee.js
+
+
+-----------------------------------------------
+new approach --> hamoon kare ghabli ke anjam dadim ro mikhay jore dg anjam bedim? jaye inke pass function kunim mikhaym pass component down kunim as a property az parent be child
+
+this is 3 layers nested:
+App --> EMployee --> EditEmployee  
+
+age layer ha nested ziad bood behtare component befresti jaye property
