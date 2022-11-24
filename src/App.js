@@ -9,13 +9,11 @@ function App() {
   
   return (
   <BrowserRouter>
-  <Header>
-    <Routes>
-      <Route path='/employees' element={<Employees/>}/>
-      <Route path='/customers' element={<Customers/>}/>
-    </Routes>
-
-    
+    <Header>
+      <Routes>
+        <Route path='/employees' element={<Employees/>}/>
+        <Route path='/customers' element={<Customers/>}/>
+      </Routes>
     </Header>
   </BrowserRouter>
   );

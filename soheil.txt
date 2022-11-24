@@ -595,4 +595,23 @@ const navigation = [
 
 
 alan ok shode va mitooni az tarighe nav bar beri be page haye mokhtalef ama ye giri ke hast ine ke vaghti masalan miri to page e customer dar navbar highligh roye Employess hast hamchenan
-in bekhater ine ke az link html yani "a" dari use mikuni
+in ro jalase bad dorost mikunim
+
+
+
+you can also define foooter after the props.children in Header.js
+
+
+zemnan pages hamoon component hast faghat khoobe ke page haro toye page folder bezarim
+
+------------------------------------------------------------
+Now lets fix the navigation bar because the background of navbar doesnot switch and we have btter react component that we can use for links instead a simple 'a' tag
+
+dar Header.js dar const navigation bia va var e current ro pak kun chun ye chize behtar migim alan-->
+jaye 'a' az tag e Navlink use mikunim ke behtare --> it has the active capability built into it --> az react-router-dom import mishe Navlink
+
+
+dar Header.js --> className ={({isActive})=>{}} ---> chun NavLink Active bodan ya naboodan ro barmikagone mitunim azash use kunim pas vase hamiin injoori neveshtimaz tarafi navlink ye object barmigardoone vase hamin {isActive} ro to{} neveshtim ke faghat oon bakhsi ke ma mikhaym ro pas begirim az object
+zeman navlink prophash href nadare balke "to" dare ---> pas benvis to={item.href}
+
+zeman age dar App.js header et biroone BrowserRouter bashe inja kuli error mide
