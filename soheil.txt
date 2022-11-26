@@ -863,3 +863,13 @@ mishe pass in an additional object kun --> replace:true ---> vaghti back mizani 
 search kun redirect ro ---> redicrect if a page is not found --->how to display content on that page like 404
 
 -----------------------------------------------------------------
+age be 404 khordim ya connection issue ba server barkhordim blank page khoob nist
+pas ye 404 compoent besaz va redirect kun age be 404 khordi ya besorate inline componet 404 ro namayesh bede
+
+dar fetch oon response ye status dare ke mitoni check kuni--> {} bezar ta khat code bishtari betoni benvisi dar multiple line
+response.json(); ro tabdil kun be return response.json(); ke hich farghi ba halate .then(response) => response.json nadare --> chun in dar ye khat bood return nazashte barash ama alan
+ma mikhay multi line benvisim bayad {} bezarim va return ro ham explicit benvisim
+
+
+console.log(response.status); --> age 404 bargardon reditrect kun
+redirect ro ham ba navigate anjam midim
