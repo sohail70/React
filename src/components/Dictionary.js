@@ -18,12 +18,18 @@ export default function Dictionary(){
 
     ///option3) restricting to a state 
 
+    // useEffect(()=>{
+    //     console.log("State Updated",word+" "+word2); //word2 inja chun async hast momkene hanooz beroz nashode bashe vali word hatam berooz shode chun useEffect arg dovomesh ro word dadim
+    // } , [word]);
+
+
+    ///Separation of concerns
     useEffect(()=>{
-        console.log("State Updated",word); //word2 inja chun async hast momkene hanooz beroz nashode bashe vali word hatam berooz shode chun useEffect arg dovomesh ro word dadim
+        console.log("State Updated",word); 
     } , [word]);
 
     useEffect(()=>{
-        console.log("State Updated",word2); //word2 inja chun async hast momkene hanooz beroz nashode bashe vali word hatam berooz shode chun useEffect arg dovomesh ro word dadim
+        console.log("State Updated",word2); 
     } , [word2]);
 
     return (

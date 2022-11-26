@@ -715,3 +715,12 @@ consolde log marbot be word2 momkene eshteba bashe
 
 
 SO USE EFFECT IS NOT GOING TO WAIT AROUND FOR WORD2
+
+pas kholase mitoni useEffect haye mokhtalef dashte bashi --> masalan initial page dar aval ye kar bokone va badesh karhaye dg bokone ! pas avali khali vali dovomo ro ba dep array bezar
+
+ye chiz dg- --> useEffect cleanUp ro nagoftim khodet bekhoon --> ghable inke componet az UI remove beshe in run mishe
+pas age didi useEffect dare ye function return mikune in cleanup hast
+
+
+-----------------------------------------
+let's use the things we learnt ---> consume data from backend
