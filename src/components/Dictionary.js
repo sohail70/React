@@ -3,11 +3,26 @@ export default function Dictionary(){
     const [word , setWord] = useState('');
     const [word2, setWord2] = useState('');
 
+    ///option1) No dependency array ---> update for any state change
 
+    // useEffect(()=>{
+    //     console.log("State Updated",word+" "+word2);
+    // });
+
+
+    ///option2) Empty dep array --> execute once
+
+    // useEffect(()=>{
+    //     console.log("State Updated",word+" "+word2);
+    // } , []);
+
+    ///option3) restricting to a state 
 
     useEffect(()=>{
-        console.log("State Updated",word+" "+word2);
-    })
+        console.log("State Updated",word+" "+word2); //word2 inja chun async hast momkene hanooz beroz nashode bashe vali word hatam berooz shode chun useEffect arg dovomesh ro word dadim
+    } , [word]);
+
+
 
     return (
         <>

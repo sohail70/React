@@ -698,3 +698,20 @@ second arg restrict  what state we care about for useEffect to be triggered
 
 dar kul se ta ravesh darim ---> pass no dep array ---> update for any state change
 vase inke ino dark kunim --> chandta state dg ham mizarim to Dictionary.js
+
+ravesh 2 ---> empty dependency array --> execute once --> update kuni input tag ro chizi log nemishe
+karbord ---> do sth on initial page load after everything is loaded then you can execute some code --> masalana you wanna fetch some data to put in webpage
+va ma faghat lazeme at the beginning of the page load on data ro begirim ke tavasote API return shode va bezarimesh to webpage 
+
+
+3rd option --> passing word in second arg--> alan faghat first input update beshe dar conslog log mishe --> only execute when thos state variables are changed
+
+nokte mohem----> alan in useEffect e paeen arg dovomesh word hast yani bad az inke in update beshe in run mishe pas be word vabastast ama be word2 vabaste nist pas 
+consolde log marbot be word2 momkene eshteba bashe
+
+    useEffect(()=>{
+        console.log("State Updated",word+" "+word2);
+    } , [word]);
+
+
+SO USE EFFECT IS NOT GOING TO WAIT AROUND FOR WORD2
