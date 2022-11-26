@@ -651,7 +651,7 @@ mostaghiman dar func bezarimehoon --> az useEffect use mikunim ---> after the pa
 suitable for many side effects like subscription and event handleres
 dar kul mige bad load shodan useEffect ye seri code ro run mikune va niazi nist in codeha dar function compoennet emon bashe
 
-ye component jadid besaz --> dictionary.js
+ye component jadid besaz --> dictionary.js --> bezaresh dar folder e pages
 tosho por kun
 Route bezar barash to App.js--->        <Route path='/dictionary' element={<Dictionary/>}/>
 va dar Headerjs ham link behesh ro dorost kun  --->   { name: 'Dictionary', href: '/dictionary'  },
@@ -724,3 +724,4 @@ pas age didi useEffect dare ye function return mikune in cleanup hast
 
 -----------------------------------------
 let's use the things we learnt ---> consume data from backend
+using useEffect by fetching data from an API
