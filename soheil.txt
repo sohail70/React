@@ -630,4 +630,64 @@ onaee ke dakhele quotation hast ro bebar ro Header bezar
 
 yani dar Header.js:  <div className='bg-gray-300 min-h-screen'>{props.children}</div>
 hala my-2 ro dar Employees.js hazf kun
-va dar Header.js ezafe kun be in padding ro    <div className='bg-gray-300 min-h-screen px-2 py-2'>{props.children}</div>
+va dar Header.js ezafe kun be in padding ro    <div className='max-w-7xl bg-gray-300 min-h-screen px-2 py-2'>{props.children}</div>
+
+nahayat :
+    <div className='bg-gray-300 '>
+        <div className='max-w-7xl min-h-screen px-2 py-2'>{props.children}</div>
+    </div>
+
+
+  chera color ro dar div bala joda kardi chun dar paeen restrict mishod be max-w-7xl
+
+
+  ------------------------------------------------------------
+
+important concept ----> useEffect ---> allows us to have some section of code that will execute anytime our state changes --> additionaly : it will run after the page is initially loaded
+pas ye bar dar beginning va dafe haye badi har vaght state, change kune run mishe --> pas ye section az code ro har vaght ma goftim run mishe!
+useEffect ---> a side effect (sth that happens when you do sth else) --> you took some drug you'll have some side effect
+dar doc e react --> mutation - subscription - timers - logging and other sideeffects are not allowed inside the main body of the component --> pas koja bezarimeshoon ? chun nemishe
+mostaghiman dar func bezarimehoon --> az useEffect use mikunim ---> after the page is loaded 
+suitable for many side effects like subscription and event handleres
+dar kul mige bad load shodan useEffect ye seri code ro run mikune va niazi nist in codeha dar function compoennet emon bashe
+
+ye component jadid besaz --> dictionary.js
+tosho por kun
+Route bezar barash to App.js--->        <Route path='/dictionary' element={<Dictionary/>}/>
+va dar Headerjs ham link behesh ro dorost kun  --->   { name: 'Dictionary', href: '/dictionary'  },
+
+hala berim az useEffect use kunim --> felan faghat ye console.log mikunim
+
+dar Dictionary.js import kun useState ro 
+useEffect do ta arg migire ke dovomi optional hast ---> avalin arg ye callback funchast 
+
+    useEffect(()=>{
+        console.log("State Updated",word);
+    })
+
+  
+alan dar console check kuni--->vaghti toye input chizi minvisi dar console ham be mahze taghire state onja ham chap mishe --->
+deghat kun useEffect ye bar moghe load kar mikune va badan ham har vght state berooz shod ---> alan refresh kuni page ro mibini ke baz dar consolde ye chiz chap mishe ---> ke to halat aval chun useState defaultesh string khali hast khali chap mikune
+
+ama agar deghat kunim mibini dobar neveshte State Updated ke bekhater strict mode dar index.js hast 
+
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+
+age tabdil kunish be <App /> ye bar minvise
+
+doc ro bekhoon vase strictmode ---> ke mige strict mode can automatically detect sideeffects for you
+dardevelopment eshkal nadare ama dar production na!
+
+alan console.log e dakhele useEffect ro bad az setWord bezari khoob kar nemikune chun setWord async hast va momkene hanooz karesh tamom nashode bahse vali useEffect zemanat mikune 
+ke pas az update shodan state run beshe! pas az useEffect use kun
+pas set func ha asynch hastan
+
+dependency array --> be useEffect begim ke be che state hayee ahamiat bede --> na alan ke be hamashoon ahamiat mide --> chun second arg ro vared nakradim
+zemnan yad begire hamishe bad az useState az useEffect use kuni
+
+pas berim soraghe second arg toye useEffect
+zemana useEffect ro dakhele functiona compoent et benvis
+
+alan ke second arg ro dar useEffect mikhaym bedim agar ghabl az useState bezarim error mide chun mige word hanooz define nashode
