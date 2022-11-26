@@ -775,3 +775,18 @@ export default function Definition(){
         })}
     </>
     );
+
+
+ezafe kardan uuid--> haminjoori alaki:) ---> uuid ---> ghabalan ham dashtim in warning ro ---> https://www.npmjs.com/package/uuid --> bekhoon nahveye usage ro
+
+moshkeli ke hast ine ke index ke kardim az koja malom request ma responseh sar e vaght biad pas ye ternary ijad kun
+pas in khat ro ezaf kun be return 
+
+        {word? word.map((meaning)=>{
+            return <p key={uuidv4()}>
+                        {meaning.partOfSpeech +' '}:
+                        {meaning.definitions[0].definition}
+                    
+                   </p>
+        }) : null}
+alan pas age request ma kond bashe blank mishe page baraye chand sanie --> mitoni jaye null ham <p>Loading</p> bezari
