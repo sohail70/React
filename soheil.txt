@@ -884,3 +884,38 @@ hala dar dictionary page ye cherot pert benvis va serach ro rosh click kun mire 
 pas ino <h1>Here is a definition: </h1> bendaz to ternary bad az ? ke neveshti --> pas niaz be fragment ham dari chun chand ta element dari return mikuni
 
 tamrin khoobie inkar vase hamiin man comment esh kardam ghablio ke ye bar dg badan anjam bedi
+
+now lets go create a 404 component in component folder because its embeded inside another page --> in separation folder ha bishtar vase khoddemon mafhoom dare ama dar kule comp haye toye folder page ro ham mishe embed kard vali ma onae ro nemikhaym embed kunim mizarim to page1
+name e comp ro ham bezar NotFound
+
+
+ino ham be route ha ezaf kun -->         <Route path='/404' element={<NotFound/>}/>
+
+
+
+in chie?--->         <Route path='*' element={<NotFound/>}/>   --> ino akar gozashtim chun injoorie ke tamae path haye bala ro mire age chizi peyda nakard ham 404 bede
+in baes mishe age toye url browser bad az localhost3000 cherto pert ham neveshti 404 biyd
+
+
+in dar defintion bara chie? --->     const [notFound , setNotFound] = useState(false); ----> ta az componet e ke taze neveshtim use kunim --> zeman in baes mishe ke url ro masaln ye kalame eshtebah neveshte bashim hamoon kalame wrong hamashoon
+roye url bemoone va redirect nashe be /404
+
+ino ham mizarim on paeen:
+
+    if (notFound===true){
+        return <NotFound/>;
+    }
+
+  albate behtaresh ke bokunim mishe in:
+
+      if (notFound===true){
+        return (
+            <>
+                <NotFound/>
+                <Link to="/dictionary">Search Another</Link>
+            </>
+        );
+    }
+
+
+ke az Link ke bayad az react-router-dom import beshe use kardim

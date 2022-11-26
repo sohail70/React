@@ -1,12 +1,13 @@
 
 import {useState, useEffect } from "react"
 import { v4 as uuidv4 } from 'uuid';
-import { useParams , useNavigate} from "react-router-dom";
+import { useParams , useNavigate , Link} from "react-router-dom";
+import NotFound from "../components/NotFound";
 
 
 export default function Definition(){
     const [word , setWord] = useState();
-
+    const [notFound , setNotFound] = useState(false);
     //console.log(useParams());
     let {search} = useParams();
     const navigate = useNavigate();
@@ -17,7 +18,8 @@ export default function Definition(){
                 console.log(response.status);
                 if(response.status===404)
                 {
-                    navigate('/404');
+                    setNotFound(true);
+                    // navigate('/404'); // jaye in az componet use kun chun redirect url ro taghir mide vali ma mikhaym kalame wrong emon ham namayesh dade beshe
                 }
                 return response.json();
             })
@@ -26,6 +28,17 @@ export default function Definition(){
                 //console.log(data[0].meanings);
             });
     },[]); //Empty dep array --> exec once
+
+
+    if (notFound===true){
+        return (
+            <>
+                <NotFound/>
+                <Link to="/dictionary">Search Another</Link>
+            </>
+        );
+    }
+
     return (
     <>
         {/* <h1>Here is a definition: </h1>
