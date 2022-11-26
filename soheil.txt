@@ -691,3 +691,10 @@ pas berim soraghe second arg toye useEffect
 zemana useEffect ro dakhele functiona compoent et benvis
 
 alan ke second arg ro dar useEffect mikhaym bedim agar ghabl az useState bezarim error mide chun mige word hanooz define nashode
+vaghti dep array ro yad begiri --> mitoni az backend api fetch kuni data va dar display page et namayesh bedi
+
+-------------------------------------------------------------------
+second arg restrict  what state we care about for useEffect to be triggered
+
+dar kul se ta ravesh darim ---> pass no dep array ---> update for any state change
+vase inke ino dark kunim --> chandta state dg ham mizarim to Dictionary.js
