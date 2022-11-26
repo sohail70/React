@@ -28,14 +28,29 @@ export default function Definition(){
     },[]); //Empty dep array --> exec once
     return (
     <>
-        <h1>Here is a definition: </h1>
+        {/* <h1>Here is a definition: </h1>
         {word? word.map((meaning)=>{
             return <p key={uuidv4()}>
                         {meaning.partOfSpeech +' '}:
                         {meaning.definitions[0].definition}
                     
                    </p>
-        }) : null}
+        }) : null} */}
+
+
+
+        
+        {word? 
+        <>
+        <h1>Here is a definition: </h1>
+        {word.map((meaning)=>{
+            return <p key={uuidv4()}>
+                        {meaning.partOfSpeech +' '}:
+                        {meaning.definitions[0].definition}
+                    
+                   </p>
+        })}</>
+        : null}
     </>
     );
     

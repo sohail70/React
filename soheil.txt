@@ -873,3 +873,14 @@ ma mikhay multi line benvisim bayad {} bezarim va return ro ham explicit benvisi
 
 console.log(response.status); --> age 404 bargardon reditrect kun
 redirect ro ham ba navigate anjam midim
+
+if(response.status===404)
+{
+    navigate('/404');
+}
+
+
+hala dar dictionary page ye cherot pert benvis va serach ro rosh click kun mire to 404 ---> ama ghablesh neveshte neshoon mide ke doost nadarim neshoon bede
+pas ino <h1>Here is a definition: </h1> bendaz to ternary bad az ? ke neveshti --> pas niaz be fragment ham dari chun chand ta element dari return mikuni
+
+tamrin khoobie inkar vase hamiin man comment esh kardam ghablio ke ye bar dg badan anjam bedi
