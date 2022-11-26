@@ -790,3 +790,38 @@ pas in khat ro ezaf kun be return
                    </p>
         }) : null}
 alan pas age request ma kond bashe blank mishe page baraye chand sanie --> mitoni jaye null ham <p>Loading</p> bezari
+zeman yadet bashe felan link e page e defintion ro dorst nakardim roye navbar pas dasti to url benvis
+
+----------------------------------------------------------------------------------------
+urls and parameterization of the previous episode
+
+
+teaching the 3rd hook ---> useParams --> pass parameters through the urls ---> make our component more dynamics
+
+masaln url ro taghir bedi akharesho be cucumber be jaye hello va defintion esh ro bebini
+bayad beri dar App.js va ghesmate routing 
+
+in route ro ezafe kun --->         <Route path='/definition/:search' element={<Definition/>}/>
+
+
+useparam:
+import { useParams } from "react-router-dom";
+
+consolde.log(useParams()); ro bezan zire useState ta bebini chie! --> monteha deghat kun ke bayad url dar browser et ro injoori benvisi masalan
+http://localhost:3000/definition/cucumber
+
+pas hala ke didim chi pas mide --> assign esh mikunim be variable search
+let {serach} = useParams();
+
+hala dar Definition.js jaye word e hello benvis-->  + search
+
+
+hala mitoni dar url benvisi
+http://localhost:3000/definition/cucumber
+ya benvisi
+http://localhost:3000/definition/paint 
+ya har vocab e ke bekhay
+
+
+zemnan inspect ro bezan bad boro to network va bad yeki az jadval choose kun va dar bakhe samte rast boro to Response va bebin chi behet return karde API
+pas age issue dashti check kun request et rafte dorost ya na
