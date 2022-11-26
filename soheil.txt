@@ -825,3 +825,41 @@ ya har vocab e ke bekhay
 
 zemnan inspect ro bezan bad boro to network va bad yeki az jadval choose kun va dar bakhe samte rast boro to Response va bebin chi behet return karde API
 pas age issue dashti check kun request et rafte dorost ya na
+
+
+---------------------------------------------------------------
+now let create a search bar for words 
+
+4th hook ---> useNavigate ---> force the user to visit a new page in our app but its not a link --> link ro user majbore click kune ama useNav put this inside of a event handler
+ghadima dar react router haye ghadimi az history use mikardan ama useNav jadid tare va dar newset version of react faghat ino gozashtan bashe ta azash use kunim
+
+
+route e definition dar App.js ro hazf kun chun dg niazi nist va alan mikhaym dar page e dictionary ye search bar bezarim ke maro bendaze to page e definition/:search
+zemana dar Dictionary.js word2 ro niazi nadarim hazfesh kun
+search bar:
+
+ye button bezar dar Dictionary.js:
+
+            <button onClick={()=>{
+                console.log("click");
+            }}>Search</button>
+
+
+navigation to a new page using useNavigate
+
+import { useNavigate } from "react-router-dom"; yadet nare 
+dar package.json chek kun install shode bashe --> age nadarish npm install react-router-dom ro bezan
+const navigate = useNavigate();
+
+
+navigate('/definition/tacos'); ---> in toro mibare be page e ke on too path esh ro neveshti
+alan dar search benvisi texas va bad click kuni --> chizi nemiare chun dar network ham bebini to bakhshe response ya Headers 404 mishe yani dictionary chizi nadare neshoon bede
+404 means the resource wasn't found
+unable to connect ham momkene rokh bede --> error connecting
+
+
+navigate('/definition/'+ word); --> in code ta alan ok hast vali vaghti rafti toye search va bad khasti back bezani barmigarde be safhe bedoone moshkele ama mishe ye kari ham kard
+mishe pass in an additional object kun --> replace:true ---> vaghti back mizani aghabtar mire --> history 
+search kun redirect ro ---> redicrect if a page is not found --->how to display content on that page like 404
+
+-----------------------------------------------------------------
