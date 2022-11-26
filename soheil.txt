@@ -725,3 +725,53 @@ pas age didi useEffect dare ye function return mikune in cleanup hast
 -----------------------------------------
 let's use the things we learnt ---> consume data from backend
 using useEffect by fetching data from an API
+
+use a freeApi on the internet that doesn't require API key --> key yani to authorize hasti az API use kuni
+WordsAPI masaln mitoni chnata reuest per day raygan bedi --> wordapi on rapidAPI
+problem --> requiring a key makes you front end app insecure --> chun key ro out bedi baghie use kun polesho to midi 
+pas rah hal chie ??? bayad key ro dar back end azash use kuni va to connect beshi be backend
+use the api key on the backend of the app --> ama alan nemikhaym backend besazim ! ---> pas az API felan use mikunim ke niaz be key nabashe
+now any body can use that URL without a key
+secure a key dar front end app ro fek nakunam raveshi dashte bashe
+
+pas az free Dictionary API use mikunim ke free hast --> https://dictionaryapi.dev/
+link aval ro copy kun --> https://api.dictionaryapi.dev/api/v2/entries/en/<word> 
+va jaye <word> har chi mikahy bezar dar url e browser va bad enter kun
+
+
+so how to make a request to this API using fetch --> fetch ye raveshee dar react--> raveshahye dg ham hast 
+doc e fetch API ro bekhon dar mdn --> https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch va dastor ro copy kun bezaresh dar dakhele useEffect dar Definition.js
+URL dakhlesho modify kun faghat in link ro bezar --> link dovom dar free dictionary API
+
+yani mishe in
+    useEffect(()=>{
+        fetch('https://api.dictionaryapi.dev/api/v2/entries/en/hello')
+            .then((response) => response.json())
+            .then((data) => console.log(data));
+    },[]); //Empty dep array --> exec once
+
+alan dar log negah kuni mibini response omade --> array omade ---> har data ee ke omad ro ba index marbote begir  --> trraverse the structure to grab the thing you needpas bayad layer be layer beri to dardevelopment
+{} bezar toye arrow function e dakhele in : .then((data) => console.log(data[0].meanings)); ta betooni chand ta kar kuni
+hala har anche ke fetch kardi ro bezar to state save kun
+
+dar nahayate func e mishe in --> deghat kun index haye info haye ke fetch kardim ro bayad khoodet dar consolde bebini dade ro ta befahmi che index e bedi
+zemnan jaye hello dar baskhe fetch mitoni ye vocab dg bezari 
+export default function Definition(){
+    const [word , setWord] = useState();
+
+    useEffect(()=>{
+        fetch('https://api.dictionaryapi.dev/api/v2/entries/en/hello')
+            .then((response) => response.json())
+            .then((data) => {
+                setWord(data[0].meanings);
+                console.log(data[0].meanings);
+            });
+    },[]); //Empty dep array --> exec once
+    return (
+    <>
+        <h1>Here is a definition: </h1>
+        {word.map((meaning)=>{
+            return <p>{meaning.definitions[0].definition}</p>
+        })}
+    </>
+    );
