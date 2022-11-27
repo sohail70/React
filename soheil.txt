@@ -1006,3 +1006,43 @@ dar App.js yechizi ghablan vase defintion/:search nevehste boodim ke pakesh kard
 
 zeman bayad dar defintion search ham dorostesh kuni -->                  navigate('/defintion/'+word); ro berooz kun be:
        navigate('/dictionary/'+word);
+
+
+--------------------------------------------------------
+Build out a backend  and connect to it by react 
+BackEnd ----> conenct to a backend ---> storing info in a data base ---> ta az har computer ee website ro run kuni ye chiz ro show kune!
+stored in a server and we connect ot a server from the front end
+zaban e backend kheili mohem nist balke interface e beyne front va backend mohem tare
+so connecting to backend from the front end is similar across all of them
+
+interface --> usually build using REST API ---> agreed way of communicating that has the ability to get info add info edit info and delete info --> CRUD --> 
+CRUD---> create read update delete ---> you can do those things no matter what backedn software we are writing 
+
+
+ziad detail albate dar backedn nemigim --> vali caleb course dare vase backend python+Aws + post gress database
+az Django use mikunim dar backend alan --. python to nasb kun va bad Django ro ok kun
+now create a virtual environment for you backend --> ye mkdir backend  --->cd kun tosh
+python3 -m venv .venv --> its a hidden directory --> doty dorost kardim ke leave it alone bokoni va kasi behesh kari nadashte bashe
+agar venv khoob dorost nashod terminal payam mide ke bayad venv ro nasb bokonu ba apt install
+sudo apt install python3.8-venv
+
+
+vase har project dar python bayad ye virtual env dashte bashi
+activate the environment --> to go into the environemnt ---> its a lens that we look at our project through
+. .venv/bin/activate
+
+dar windows active kardan injoorie:
+.venv\Source\activate
+
+python -m pip install django
+
+command django-admin ro bezan ta command haro bebini
+django-admin startproject name_of_the_project . --> . to refere to the current directory
+python3 manage.py runserver
+
+ba manage.py rahat tar dastorat ro mishe ejra kard pas az in tarigh run mikunim
+kholase alan ye running server dar http://127.0.0.1:8000/ darim
+boro be in address dar browser 
+az localhost:8000 ham mitoni use kuni
+
+backend is cpable of delivering html chun to address bala ham mibin ke ye site engari baz shode ---> vali badan mirim soraghe json file ro jaygozin html mikunim
