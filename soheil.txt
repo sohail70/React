@@ -895,7 +895,7 @@ ino ham be route ha ezaf kun -->         <Route path='/404' element={<NotFound/>
 
 in chie?--->         <Route path='*' element={<NotFound/>}/>   --> ino akar gozashtim chun injoorie ke tamae path haye bala ro mire age chizi peyda nakard ham 404 bede
 in baes mishe age toye url browser bad az localhost3000 cherto pert ham neveshti 404 biyd
-
+zemnan * be manaye everything hast
 
 in dar defintion bara chie? --->     const [notFound , setNotFound] = useState(false); ----> ta az componet e ke taze neveshtim use kunim --> zeman in baes mishe ke url ro masaln ye kalame eshtebah neveshte bashim hamoon kalame wrong hamashoon
 roye url bemoone va redirect nashe be /404
@@ -919,3 +919,42 @@ ino ham mizarim on paeen:
 
 
 ke az Link ke bayad az react-router-dom import beshe use kardim
+
+-----------------------------------------------------------------------------------------
+error haye dg ham darim 000> Http response status codes ro search kun --> https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+
+
+Client error responses
+401 Unauthorized masalan ---> its up to the server to return the appropiate response ---> server mige to unauthorize hasti behet 401 midam!
+pas ma bayad login beshim --> pas in mishe client error response
+ya method not allowed --> wrong http method
+
+server error ham darim ---> can not compute masalan --> inja 500 error migiri
+
+
+pas inaro mishe dar Definition.js dar fetch check kuni
+
+else if(response.status===401)
+{
+    navigate('/login');
+}else if(response.status===500)
+{
+    // setServerError(true); //badan benvis age khasti
+}
+
+behtarin ravesh bara test use kardan az site http://httpstat.us/ ---> make a request to this page with the error code we want to recieve back
+agar ham dar backend dari kar mikuni pas mitoni khodet inkaro bokoni
+
+pas masalan dar Definition.js ye const url = 'http://httpstat.us/404' ijad kun va beedesh be fetch jaye url ghabli 
+albate unfortunately filter hast in site
+
+
+albate alan age const url ro ye chiz e cherto pert benvisi error status nemide balke error get o ina mide pas behtare ye chizi mesle in ham toye fetch bezari:
+                if(! response.ok)
+                {
+                    setError(true);
+                    throw new Error("Something went wrong");
+                }
+
+in chizi ke throw kardi ro paeen tar dar .then (data) cziresh .catch kun
+alabte nemidoonam chera vaghti url e giberish mizanam nemire toye fetch va mostaghim mire to catch --> pas error ro true nemikune --> ????!!
