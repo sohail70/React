@@ -969,3 +969,40 @@ va ye seri taghirat kochik dg
 zemana reaplce true ro dar Ditionary hazf kun ke vaghti back mizani bargarde be page e dictionary
 dar Dictionary.js jaye inke fragment bargardoni ye form bargardon va onClick e button mohtaviatesho beriz toye arrow func e onSubmit va kholase onClick button to pak kun az button tag--> chera ? because by default when you have a form, the button will submit that form
 va alan mitoni az Enter key use kuni vaghti on form selected bashe
+
+
+style dadane form --> chera addad to bracket hast --->  max-w-[300px] ---> chun addade custom darim midim
+
+max-width chie? --> ghablan masalan component button va search bar kole page ro poshes midad ama alan faghat 300 pixel ro poshes mide --> ba inspect chek kun
+
+
+        <form className="flex ...." 
+            onSubmit={()=>{
+            navigate('/definition/'+word);
+        }}>
+            <input className="shrink min-w-0 ...." 
+
+be flex va bad dakhlesh tag e child esho shrink dadim ta vaghti safhe kochik mishe (masalan mobile) mishe in shrink beshe
+zemnan by default ina min width daran khodeshon va age min-w-0 nazari kar nemikune
+
+DefintionSearch.js ro ijad kun va content e dakhele Dictionary.js ro beriz tosh va dar Dictionary.js faghat DfeintionSearch.js ro return kun
+alan mesle ghabl hast vali farghesh ine ke ye component darim ke mitonim reuse kunim (hamiin DefinitionSearch manzoore) 
+hala dar Defintion.js in component ro dar enteha use kun ta betooni search again bokoni
+
+
+ino dar Dictionary.js bezar
+    <div className="flex justify-center">
+        <DefinitionSearch/>
+    </div>
+
+alan toye page e dictionary center mishe vali vaghti serach mikuni center nist --> khoshgel shode alan
+
+
+setup kardan url paramterization --> yani injoori url bedi va kar kune http://localhost:3000/dictionary/hello
+
+dar App.js yechizi ghablan vase defintion/:search nevehste boodim ke pakesh kardim pas alan berooz kun be in
+
+<Route path='/dictionary/:search' element={<Definition/>}/>
+
+zeman bayad dar defintion search ham dorostesh kuni -->                  navigate('/defintion/'+word); ro berooz kun be:
+       navigate('/dictionary/'+word);

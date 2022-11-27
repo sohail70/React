@@ -3,6 +3,7 @@ import {useState, useEffect } from "react"
 import { v4 as uuidv4 } from 'uuid';
 import { useParams , useNavigate , Link} from "react-router-dom";
 import NotFound from "../components/NotFound";
+import DefinitionSearch from "../components/DefinitionSearch";
 
 
 export default function Definition(){
@@ -15,7 +16,7 @@ export default function Definition(){
     useEffect(()=>{
         // const url = 'http://httpstat.us/404';
         // const url = 'http://www.aaaabbbb.com';
-        
+
         // fetch('https://api.dictionaryapi.dev/api/v2/entries/en/hello') //jaye hello mitoni ye vocab dg bezari
         fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+search) //jaye hello mitoni ye vocab dg bezari
         // fetch(url)
@@ -94,7 +95,10 @@ export default function Definition(){
                         {meaning.definitions[0].definition}
                     
                    </p>
-        })}</>
+        })}
+        <p>Search Again:</p>
+        <DefinitionSearch/>
+        </>
         : null}
     </>
     );
