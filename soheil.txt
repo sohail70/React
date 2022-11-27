@@ -958,3 +958,14 @@ albate alan age const url ro ye chiz e cherto pert benvisi error status nemide b
 
 in chizi ke throw kardi ro paeen tar dar .then (data) cziresh .catch kun
 alabte nemidoonam chera vaghti url e giberish mizanam nemire toye fetch va mostaghim mire to catch --> pas error ro true nemikune --> ????!!
+
+pas dar kul backend ya API, status code haro be ma mide va bayad bekhoonimehson bebinim che status code option hayee return mishe va da front end dar fetch bahshoon deal mikunim
+
+-----------------------------------------------
+do some styling and refactoring of the dictionary and ... that we've Created
+
+ezafe kardan Enter be search
+va ye seri taghirat kochik dg
+zemana reaplce true ro dar Ditionary hazf kun ke vaghti back mizani bargarde be page e dictionary
+dar Dictionary.js jaye inke fragment bargardoni ye form bargardon va onClick e button mohtaviatesho beriz toye arrow func e onSubmit va kholase onClick button to pak kun az button tag--> chera ? because by default when you have a form, the button will submit that form
+va alan mitoni az Enter key use kuni vaghti on form selected bashe
