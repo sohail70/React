@@ -10,6 +10,13 @@ export default function Customers(){
             console.log(data);
             setCustomers(data);
         }) 
-    },[]); //remmeber the empty dependency array
-    return <h1>Hello There!</h1>;
+    },[]); //remmeber the empty dependency array --> to do this only once in initial load
+    return(
+        <>
+            <h1>Here are out customers</h1>
+            {customers? customers.map((customer)=>{
+                return <p>{customer.name}</p>
+            }) : null}
+        </>
+    );
 }

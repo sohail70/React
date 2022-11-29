@@ -1252,7 +1252,7 @@ export default function Customers(){
             console.log(data);
             setCustomers(data);
         }) 
-    },[]); //remmeber the empty dependency array
+    },[]); //remmeber the empty dependency array --> to do this only once in initial load
     return <h1>Hello There!</h1>;
 }
 
@@ -1297,3 +1297,9 @@ ke mishe in -->
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000'
 ]
+
+
+
+
+alan dar console data backend ro mibnin
+hala to page namayeshesh bede ba use kardan az map function
