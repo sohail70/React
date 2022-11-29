@@ -1309,3 +1309,47 @@ CORS_ALLOWED_ORIGINS = [
 
 alan dar console data backend ro mibnin
 hala to page namayeshesh bede ba use kardan az map function
+
+-------------------------------------------------------------------------
+create a details page --> request the details from one element from our API
+yani masalan dar page e customers roye Intel clock kuni ke ye page jadid baz she va tozihate on customers ro neshoon bede
+
+ye button ha mmizarim ke new customer ijad kunim
+
+in ghabelyato dar backend ke rahat dashtim ---> hala mikhay dar react ham in CRUD abilty yani create - read - update - delete ability ro dashte bashim
+
+'POST' ---> it means how you add data
+'PATCH' --> for updating the data --> 'PUT' is more common than 'PATCH'
+'DELETE' --> deleting the data
+
+
+zeman vaghti dari az front be back requet midi in be sorate default 'GET' request hast
+alan dar inspect dar baskhshe network negah kuni va refresh kuni dar bakhshe request be customers click kuni 'GET' ro mibini
+alan vase inke full CRUD vapability build kunim az request method haye dg be gheyre GET az tarigh fetch ashna mishim
+
+
+now lets make a details API
+mikhaym be backend id befrestim va localhost:8000/api/customers be ma detail ono bede dar backend bayad do ta kar kunim 
+dar urls.py sepas associate view dar view.py 
+vase url nahveye paramterize kardan ham injoorie --> <type_of_data:name_of_data> --> ke masalan mishe <int:id>
+kholase dar urls.py ino ezaf kun:
+path('api/customers/<int:id>', views.customer , name='customer')
+
+zeman  view.customer minvisim chun ye donast pas 's' nadare singular hast 
+
+hala dar view customer ro bezar:
+deghat kun pk mishe primary key ke az samte front miad
+
+def customer(request,id):
+    data = Customer.objects.get(pk=id) # we don't wanna get all of them so we use get() instead of all() 
+    serializer = CustomerSerializer(data)
+    return JsonResponse({'customer': serializer.data}) #serializer.data dar vaghe serialize shode ye data  hast- choon in ba json compatible hast va ma ino be onvan response miferestim
+
+inam shod endpoint e jadidemon --> mitoni to browser negash kuni --> http://localhost:8000/api/customers/1  --> id esh 1 hast
+hala mitoni be in endpoint baid e 1 request befresti
+
+hala berim to react va vasl shim be in endpoint ha
+<p>{customer.name}</p> dar Customers.js ro ba tag e Link jaygozin kun (Link tag male react-router-dom hast)
+ke mishe in:
+
+<p><Link to={"/customers/"+customer.id}>{customer.name}</Link></p>
