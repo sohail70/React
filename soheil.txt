@@ -1353,3 +1353,11 @@ hala berim to react va vasl shim be in endpoint ha
 ke mishe in:
 
 <p><Link to={"/customers/"+customer.id}>{customer.name}</Link></p>
+
+hala mire to page ha vali info ha tosh nist
+ye page jadid dar folder page bezar ke vase individual customer ha hast
+esmesh ro ham bezar Customer.js ke singualr hast ba Customers.js ghati nashe
+shabih be page e Definition.js minvisimesh
+yani mikhaym az useParam use kunim
+
+bayad dar App.js ham route ro dorost kuni ta componet Customer.js namayesh dade beshe
