@@ -1361,3 +1361,22 @@ shabih be page e Definition.js minvisimesh
 yani mikhaym az useParam use kunim
 
 bayad dar App.js ham route ro dorost kuni ta componet Customer.js namayesh dade beshe
+hala ba haminghad code zir:
+
+import { useParams } from "react-router-dom";
+
+export default function Customer(){
+    const {id} = useParams(); //useParam returns the object but we only want the id so we put it in {} to destructure that
+    return (
+        <>
+            <p>{id}</p>
+        </>
+    );
+}
+
+
+age dar browser benvisi
+http://localhost:3000/customers/3
+adade 3 ro to page neshoon mide
+
+vali mikhaym one time rokh bede ---> pas useEffect
