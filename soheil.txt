@@ -1191,7 +1191,109 @@ dar url.py neveshte boodi ke     path('api/customers/',views.customers , name='c
 
 pass byad benvisi dar browser : localhost:8000/api/customers
 
-hala site ino namayesh mide --> {"customers": []}
+hala site ino namayesh mide --> {"customers": []} --> data khalie 
 
 --------------------------
 how to add data to the json and consume it from react
+
+ye file admin.py ezafe kun dar backend project --> it describes an admin site that allows us to have CRUD access to the dat base witohut extra effort
+alan age dar browser benvisi --> localhost:8000/admin varede admin page mishi --> alabte in az ghabl ham vojod dasht rabti be ijad file admin.py nadare
+account chejoori ijad kunim --> az terminal
+python manage.py createsuperuser --> ino benvis 
+hala user pass bede behehs --> har do ro bede soheil --> alabte dar production hamchin password e simple e nade
+hala mitoni vared sho va different table haro bebini va dat a ro bebnini
+hala mikhaym dar admin.py hamin page ro config kunim ta new table emon inja show up kune
+
+inaro dar admin.py benvis:
+
+from django.contrib import admin
+from customers.models import Customer
+admin.site.register(Customer)
+
+hala age localhost:8000/admin ro ye refresh kuni bayad customers ezaf shodebashe age nashood server ro beband dobare run kun
+chi ijad shode ? App name and we have one table in there and it is customer --> you can add inside --> a cutomer object
+hala ke ezaf kardi mitoni beri dar localhost:8000/api/customer va bebini chi ijad shode
+
+{"customers": [{"id": 1, "name": "Intel", "industry": "Processors"}]}
+
+
+shabih hamoon employee haye bood ke dar react dashtim
+do ta dg ham ezaf kun
+
+
+now how to consume the api from react application --->  az Definition component use mikunim chun ghablan ham web request karde bodim bahash va chiz toye page goazhte bodim bahash
+process injoori bood:
+az useEffect use kun which makes a request to a url  and assign that to some data and loop thoruhg the data and display it on the page
+pas Definition.js ro copy kun
+in info haro mizarim to customer page ke barash toye navigatin bar ye page gozashtim
+berim customer.js ro por kunim jaye inke tosh Hello There bashe
+
+fetch kulan insheklie
+
+        fetch()
+        .then()
+        .ten()
+hala tosho por kun
+
+
+
+
+kholase inaro dar Cusotmer.js benvis:
+
+import { useEffect , useState } from "react";
+
+export default function Customers(){
+    const [customers , setCustomers] = useState();
+    useEffect(()=>{
+        console.log("Fetching...");
+        fetch('http://localhost:8000/api/customers/') // forward slash akhar moheme
+        .then((response)=>{return response.json()}) //reponse is here -->mitoni {} va return ro ham nazari
+        .then((data)=>{ //data to assign to some state
+            console.log(data);
+            setCustomers(data);
+        }) 
+    },[]); //remmeber the empty dependency array
+    return <h1>Hello There!</h1>;
+}
+
+ama alan beri site et rochek kuni kuli dar console error dari va mige block karde ---> chun by default backend emon tamae request haro deny mikune
+bayad ye package nasb kuni ke CORS ro config kuni
+kholase localhost:3000 path e hast ke darim azash request midim --> in mishe origin ke bayad dar backend begim i legit hast
+
+dar cmd backend benvis --> pip install django-cors-headers
+va hala benvis:
+pip freeze --local > requirements.txt
+
+hala be INSTALLED_APP va MIDDLEWARE dar settings.py ezafash kun
+
+baraye inke bebini chi bayad ezaf kuni az in komak begir --> https://github.com/adamchainz/django-cors-headers
+
+
+INSTALLED_APPS = [
+    ...,
+    "corsheaders",
+    ...,
+]
+
+
+MIDDLEWARE = [
+    ...,
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    ...,
+]
+
+CorsMiddleware should be placed as high as possible ---> zeman '' bezar jaye "" ta ba bghaie yeki beshe va ayazan dar bala bezar 
+
+hala ye list ee az allowed origin haro bede tebghe site e bala:
+CORS_ALLOWED_ORIGINS = [
+    "https://example.com",
+    "https://sub.example.com",
+    "http://localhost:8080",
+    "http://127.0.0.1:9000",
+]
+
+ke mishe in --> 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000'
+]
