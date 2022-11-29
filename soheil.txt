@@ -1017,7 +1017,7 @@ so connecting to backend from the front end is similar across all of them
 
 interface --> usually build using REST API ---> agreed way of communicating that has the ability to get info add info edit info and delete info --> CRUD --> 
 CRUD---> create read update delete ---> you can do those things no matter what backedn software we are writing 
-
+rest dar vaghe ye agreed way of transfering data between application hast --> its in a json format --> pas rahat miad to react va ma ham ghablan dar Employees.js json tor neveshte bodim
 
 ziad detail albate dar backedn nemigim --> vali caleb course dare vase backend python+Aws + post gress database
 az Django use mikunim dar backend alan --. python to nasb kun va bad Django ro ok kun
@@ -1046,3 +1046,152 @@ boro be in address dar browser
 az localhost:8000 ham mitoni use kuni
 
 backend is cpable of delivering html chun to address bala ham mibin ke ye site engari baz shode ---> vali badan mirim soraghe json file ro jaygozin html mikunim
+vase json niaz be ye tool dg ham hast
+
+---------------------------
+create a backend API --> difficult 
+hala ba vs code in app ro baz kun--> dar dir az "code ." use kun ta mostaghim path ro dade bashi
+
+git init kun
+touch .gitignore bezan
+search kun dar google ---> gitognore django 
+site e topdal ro baz kun 
+https://www.toptal.com/developers/gitignore/api/django
+copy kun content site ro 
+alan adade 5k dar bakhse source control e vscode drop down mikune be 7 ta
+git add .
+git commit -m "Init Project"
+
+hala dar git boro repo dorost kun 
+va chun locally repo ro dorost kardi az ghabl az 3 dastor paeen use kun
+
+git remote add origin git@github.com:sohail70/React-backend-django.git
+git branch -M main
+git push -u origin main
+
+hala dar terminal vscode v env ro activate kun age active nisti
+
+
+benvis python3 --version 
+hala benvis python --version 
+javab mide chun ba python3 venv ro dorst kardi niazi nist "3" ro bezari
+az pip ham directly mitooni use kuni niazi nist ghablesh python3 pip install benvisi
+
+hala benvis:
+pip install django-rest-framework
+
+pip install --upgrade pip ---> age lazem shod bezan
+
+
+ye chize khoobi ke react dasht in bood ke vaghti package nasb mikardi be sorate automatic package.json ro update mikardan
+ama dar django package list behseh add nemishe bayad manually dorost kuni
+pip freeze  ro bezan ---> kule pakcage haee intall shode ro neshoon mide 
+dastore zir robezan ta redirect behse be file req...txt
+pip freeze > requirements.txt
+this file keep track of the packages we've had installed
+va alan dar django ye chizi shabi npm install dorost shod ke miaym minvisim: pip install -r requirement.txt --> mire to file va nasb mikune
+pas package age mikhay nasb kuni ba requierment.txt ezafe kun ba zadan dobareye dastore zir:
+
+pip freeze > requirements.txt
+
+alabte be nazaram az pip freeze --local > requierments.txt use kun choon local faghat packhaye toye virtual env ro miare
+
+pas har vaght chizi ba pip nasb kardi dastore pip freeze --local >requie,emt.txt ro bezan badesh va age chizi pak shod dastore paeen ro bezan
+pip install -r requirements.txt ro bezan hala --> ke mishe hamoon npm install to react
+
+
+khoob berim soraghe Rest --> bayad ye model dorst kunim in our django --> rep of data
+url path --> locatio nto oaccess the daryaft
+serializer --> describe how to go from data base object to json data
+
+
+
+-------------------------------------------------------------------
+
+hala vs code ro vase folder e backend baz kun:
+virtual env ro active kun aval ba -->  . .venv/bin/activate
+hala python manage.py runserver ro bezani error mide --> 18 unapplied migration ---> chun darim ba structured data base kar mikunim ke by default sqllite hast
+va mishe ba postgress ya nosql ya harchi taghir peyda kune
+bayad migration use kuni ---> describing the changes that we need to make to the data base from our code --> ta mostaghiman ba sql kar kunim
+pas python manage.py migrate ro bezan
+alan ke mikhay model ro dorost kuni bayad in migration ro ham add kuni
+boro dar folder customers --> models.py dorost kun --> to describe any model that we need for out application 
+model is just another word for database table ---> different entities that we need to describe
+
+
+ino tosh benvis 
+
+from django.db import models
+
+class Customer(models.Model):
+    name = models.CharField(max_length=200)
+    industry = models.CharField(max_length=100)
+
+pas class e modelet bayad az models.Model ers bebare
+ina shod attribute each customer
+hala chejoori ino vared data base kunim? dar cmd python mange.py makemigrations customers
+error mide ---> boro to setting esme app et ro dar INSTALLED_APP vared kun yani benvis 'customers
+
+alan ke dobare dastor ro bezni ye migration folder ijad mishe --> ke taghirati ke dar database dadim ro neshoon mide
+
+hala bayad in change ro apply kuni be database --> python mange.py migrate ro bezan --> hala tamoom shod
+
+agar func ha ro nemishani az python manage.py ro bezan ta list kune
+
+
+hala url path ro bedim ---> dar url.py bayad inkaro anjam bedi --> shabih routing dar react hast
+
+ino benvis -->     path('api/customers/',views.customers, name='customers') --> views.customer dar vaghe func e hast ke incoming request ro migire
+
+in import ham yadet nare --> from customers import views
+va alan dar project et file views.py ro ijad kun
+va tosh benvis 
+def customers(request): # ke in mikhad data ee ke az samte client dare be sorate request miad ro handle kune
+  #invoke serializer    ---> which goes from data base object to json data
+  pass
+
+felan pass neveshtim vali badan poresh miknuim --> felan berim seralizer ro dorst kunim
+ye serializer.py dar project ijad kun
+ghable inke poresh kuni boro dar setting.py va dar bakhshe INSTALLED_APPS ino vared kun 'rest_framework'
+hala dar serializers.py benvis:
+
+age intellisens moshkel dare ctrl+shif p ro bezan va benvis select interpreter va vend ro choose kun
+
+kholase dar serailizers.py benvis:
+
+from rest_framework import serializers
+from customers.models import Customer
+class CustomerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Customer #model e ke mikhay serialize kunim
+        fields = '__all__' #che field hayee tosh mikhaym? hame --> mishe har attribute ke mikhay ro to list bezari
+        
+hala az in serializer dar view et use kun
+boro dar views.py va benvis:
+
+from customers.models import Customer
+from django.http import JsonResponse
+from customers.serializers import CustomerSerializer
+def customers(request):
+    #invoke serializer and return to client
+    data = Customer.objects.all() # to get all our cutomer objects 
+    # now serialize all this data
+    serializer = CustomerSerializer(data , many=True)
+    return JsonResponse({'customers': serializer.data}) #serializer.data dar vaghe serialize shode ye data  hast- choon in ba json compatible hast va ma ino be onvan response miferestim
+
+
+
+kolase models describes our data va serializer tell us how to serialize it!
+
+hala dar cmd benvis python manage.py runserver
+va bad boro be local host e 8000 ta back end ro bebini
+
+page not found mide --> bekhatere url hast !
+dar url.py neveshte boodi ke     path('api/customers/',views.customers , name='customers')
+
+pass byad benvisi dar browser : localhost:8000/api/customers
+
+hala site ino namayesh mide --> {"customers": []}
+
+--------------------------
+how to add data to the json and consume it from react
