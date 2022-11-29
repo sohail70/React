@@ -8,7 +8,7 @@ export default function Customers(){
         .then((response)=>{return response.json()}) //reponse is here -->mitoni {} va return ro ham nazari
         .then((data)=>{ //data to assign to some state
             console.log(data);
-            setCustomers(data);
+            setCustomers(data.customers);  // cutomers array e dakhele object ro migirim ke bottonim roye array map bezanim
         }) 
     },[]); //remmeber the empty dependency array --> to do this only once in initial load
     return(

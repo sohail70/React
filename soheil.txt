@@ -1250,12 +1250,18 @@ export default function Customers(){
         .then((response)=>{return response.json()}) //reponse is here -->mitoni {} va return ro ham nazari
         .then((data)=>{ //data to assign to some state
             console.log(data);
-            setCustomers(data);
+            setCustomers(data.customers); // cutomers array e dakhele object ro migirim ke bottonim roye array map bezanim
         }) 
     },[]); //remmeber the empty dependency array --> to do this only once in initial load
-    return <h1>Hello There!</h1>;
+    return(
+        <>
+            <h1>Here are out customers</h1>
+            {customers? customers.map((customer)=>{
+                return <p>{customer.name}</p>
+            }) : null}
+        </>
+    );
 }
-
 ama alan beri site et rochek kuni kuli dar console error dari va mige block karde ---> chun by default backend emon tamae request haro deny mikune
 bayad ye package nasb kuni ke CORS ro config kuni
 kholase localhost:3000 path e hast ke darim azash request midim --> in mishe origin ke bayad dar backend begim i legit hast
