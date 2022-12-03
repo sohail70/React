@@ -1446,3 +1446,7 @@ hala front end emon a mdorost shod
 
 
 ravesh dovom : use kardan az state --> notFound va use kardan azash dar return entehaye Customer.js
+
+
+
+refactoring ---> ye seri jaha url hardcode shode darim ke mikhaym bezarimesh ye ja --> ye shared.js ijad kun dar folder e src

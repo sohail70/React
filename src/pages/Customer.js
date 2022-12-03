@@ -2,6 +2,9 @@ import { useParams , useNavigate, Navigate } from "react-router-dom";
 import { useEffect , useState } from "react";
 import { Link } from "react-router-dom";
 import NotFound from "../components/NotFound";
+import { baseUrl } from "../shared";
+
+
 export default function Customer(){
     const {id} = useParams(); //useParam returns the object but we only want the id so we put it in {} to destructure that
     const [customer , setCustomer] = useState();
@@ -10,7 +13,7 @@ export default function Customer(){
 
     useEffect(()=>{
         console.log('useEffect'); //dobar useEffect ro mibini chun strict mode et active hast --> felan bezar bashe chun dar dev mode hastim
-        const url = 'http://localhost:8000/api/customers/' + id;
+        const url =baseUrl+'api/customers/' + id;
         fetch(url)
         .then((response)=>{
             if(response.status===404)
