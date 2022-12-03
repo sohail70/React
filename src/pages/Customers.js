@@ -15,10 +15,16 @@ export default function Customers(){
     },[]); //remmeber the empty dependency array --> to do this only once in initial load
     return(
         <>
-            <h1>Here are out customers</h1>
+            <h1>Here are our customers</h1>
+            <ul>
             {customers? customers.map((customer)=>{
-                return <p><Link to={"/customers/"+customer.id}>{customer.name}</Link></p>
+                return (
+                    <li key={customer.id}>
+                        <Link to={"/customers/"+customer.id}>{customer.name}</Link>
+                    </li>
+                )
             }) : null}
+            </ul>
         </>
     );
 }

@@ -28,6 +28,12 @@ export default function Customer(){
             setCustomer(data.customer); //data e ma dar backend chanta property dare vase hamiin az dot use kardim
         })
     } , []);
+
+
+    function deleteCustomer(){
+        console.log("Deleting");
+    }
+
     return (
         <>
             {notFound? <><NotFound/> <p>The customer with id {id} was not found </p></>: null}
@@ -39,7 +45,8 @@ export default function Customer(){
             </div> 
             
                     : null}
-            
+            <button onClick={deleteCustomer}>Delete</button> 
+            <br />
             <Link to='/customers'>Go back</Link>
         </>
     );

@@ -1450,3 +1450,154 @@ ravesh dovom : use kardan az state --> notFound va use kardan azash dar return e
 
 
 refactoring ---> ye seri jaha url hardcode shode darim ke mikhaym bezarimesh ye ja --> ye shared.js ijad kun dar folder e src
+Customer.js va Customers.js ro dorst kun va import kun in url e baseUrl ro
+
+
+-------------------------------------------
+Exapnd our api to be have full CRUD ability
+dar backend dar view.py ---> ravesh try except and json respons javap mide vali ravesh behtar hast:
+import ha:
+
+from rest_framework.decorators import api_view #which methods are allowed
+from rest_framework.response import responses #json 404 or html Response
+from rest_framework import status #options fro status code --> 200s 300s 400s and others
+
+
+code ham paeenesh injoori taghor mikune:
+
+@api_view(['GET','POST','DELETE']) #define api that can take get post delete request --> we used api decorator which describes functionality fro this function
+def customer(request,id):
+    try:
+        data = Customer.objects.get(pk=id) # we don't wanna get all of them so we use get() instead of all() 
+    except Customer.DoesNotExist:
+        #raise Http404('Customer does not exist') 
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    serializer = CustomerSerializer(data)
+    # return JsonResponse({'customer': serializer.data}) #serializer.data dar vaghe serialize shode ye data  hast- choon in ba json compatible hast va ma ino be onvan response miferestim
+    return Response({'customer': serializer.data}) 
+
+hala ino dar browser bezar ===> http://localhost:8000/api/customers/5 --> ye page jadid ke male rest hast baz mishe
+use kardan az in API django rest in khoobi ro dare ke dg external api testing tools mesle postmen niazi nist  as much!
+mishe rahat raft be page e customer 3 ---> va DELETE ro dar button bezani ama kar nemikuni --->hanooz functionality nadare byad code sh ro dar view.py benvisi va in buttun hala delete mikune
+
+
+code ro injoori kun:
+
+@api_view(['GET','POST','DELETE']) #define api that can take get post delete request --> we used api decorator which describes functionality fro this function
+def customer(request,id):
+    try:
+        data = Customer.objects.get(pk=id) # we don't wanna get all of them so we use get() instead of all() 
+    except Customer.DoesNotExist:
+        #raise Http404('Customer does not exist') 
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method =='GET':
+        serializer = CustomerSerializer(data)
+        # return JsonResponse({'customer': serializer.data}) #serializer.data dar vaghe serialize shode ye data  hast- choon in ba json compatible hast va ma ino be onvan response miferestim
+        return Response({'customer': serializer.data}) 
+    elif request.method=='DELETE':
+        data.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT) #har status e ke fek mikuni monaseb hast ro bezar
+
+
+ala mitoni az button DELETE dar backend browser use kuni ta customer e delkhah ro delete kuni 
+masalan boro http://localhost:8000/api/customers/3 va DELETE ro bezan
+alan belafasele to hamoon page minvise 204_no_content ---> hamoon chizi ke dar views.py neveshte boodi
+age dobare beri be page e customer 3 --> 404 mide hala
+
+
+in dastante decorator ro vase def customers ham bezar --> ta age dar backend site customers ro ham khastim bebini oni ke delete shode ro neshoon nade
+alan page customers ham mesle customer dar backend page khoshgel shode
+
+POST chikar mikune ---> edit the data for specific customer ---> button ham dare dar backedn page --> faghat code sh ro bezar dar views.py
+
+
+code hala mishe:
+
+
+@api_view(['GET','POST','DELETE']) #define api that can take get post delete request --> we used api decorator which describes functionality fro this function
+def customer(request,id):
+    try:
+        data = Customer.objects.get(pk=id) # we don't wanna get all of them so we use get() instead of all() 
+    except Customer.DoesNotExist:
+        #raise Http404('Customer does not exist') 
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method =='GET':
+        serializer = CustomerSerializer(data)
+        # return JsonResponse({'customer': serializer.data}) #serializer.data dar vaghe serialize shode ye data  hast- choon in ba json compatible hast va ma ino be onvan response miferestim
+        return Response({'customer': serializer.data}) 
+    elif request.method=='DELETE':
+        data.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT) #har status e ke fek mikuni monaseb hast ro bezar
+    elif request.method=='POST':
+        serializer = CustomerSerializer(data , data=request.data) #arg1 --> data ee ke az DB migiri hast va arg2 mishe new Data
+        if serializer.is_valid(): #check to see if the serialization was valid
+            serializer.save()
+            return Response({'customer':serializer.data})
+
+        return Response(serializer.errors , status=status.HTTP_400_BAD_REQUEST)
+
+
+hala boro to website http://localhost:8000/api/customers/1
+va ino copy kun
+    {
+        "id": 1,
+        "name": "Intel",
+        "industry": "Processors"
+    }
+
+dar paeen dar box e content:
+va info haro berooz un har joor khasti
+    {
+        "id": 1,
+        "name": "IntelJadid",
+        "industry": "Processors"
+    }
+
+hala post ro bezan
+
+
+dar bakhshe customers ke s dare mishe new data ezaf kard --> id ro khode DB set mikune
+
+pas boro to in page http://localhost:8000/api/customers/
+
+alabte alan ar nemikune POST ro bazni 
+balke bayad bayad to def customers bayad POST ro implement kuni:
+
+
+code def customers injoori mishe:
+
+@api_view(['GET','POST'])
+def customers(request):
+    if request.method=='GET':
+        #invoke serializer and return to client
+        data = Customer.objects.all() # to get all our cutomer objects 
+        # now serialize all this data
+        serializer = CustomerSerializer(data , many=True)
+        # return JsonResponse({'customers': serializer.data}) #serializer.data dar vaghe serialize shode ye data  hast- choon in ba json compatible hast va ma ino be onvan response miferestim
+        return Response({'customers': serializer.data}) #serializer.data dar vaghe serialize shode ye data  hast- choon in ba json compatible hast va ma ino be onvan response miferestim
+    elif request.method=='POST':
+        serializer = CustomerSerializer(data=request.data) #in dg mesle paeen arg 1 nadare chun nemikhaym edit kunim balke mikhay ijad kunim
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'customer': serializer.data}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors , status=status.HTTP_400_BAD_REQUEST)
+
+hala boro ino dar oon box ezaf kun:
+{
+        "name": "BurgerKing",
+        "industry": "burgers"
+}
+
+
+id nemikhad vared kuni chun khode DB dorost mikune baramoon
+
+POST ro ke bezani id=4 ijad mishe
+id=3 skip shode chun delete esh kardi
+
+hala dg essential API endpoint vase crud ro dari
+
+-----------------------------------------------------------------------------
+match the front end to backend api endpoints
+dar front delete bezarim ke az backend delete kune va in dastana
+
