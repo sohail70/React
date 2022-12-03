@@ -1380,3 +1380,69 @@ http://localhost:3000/customers/3
 adade 3 ro to page neshoon mide
 
 vali mikhaym one time rokh bede ---> pas useEffect
+
+dar nahayt file Customer.js mishe in:
+
+
+
+import { useParams } from "react-router-dom";
+import { useEffect , useState } from "react";
+import { Link } from "react-router-dom";
+
+export default function Customer(){
+    const {id} = useParams(); //useParam returns the object but we only want the id so we put it in {} to destructure that
+    const [customer , setCustomer] = useState();
+    useEffect(()=>{
+        console.log('useEffect'); //dobar useEffect ro mibini chun strict mode et active hast --> felan bezar bashe chun dar dev mode hastim
+        const url = 'http://localhost:8000/api/customers/' + id;
+        fetch(url)
+        .then((response)=>{return response.json()})
+        .then((data)=>{
+            setCustomer(data.customer); //data e ma dar backend chanta property dare vase hamiin az dot use kardim
+        })
+    } , []);
+    return (
+        <>
+            {customer ? 
+            <div>
+                <p>{customer.id}</p>
+                <p>{customer.name}</p>
+                <p>{customer.industry}</p>
+            </div> 
+            
+                    : null}
+            
+            <Link to='/customers'>Go back</Link>
+        </>
+    );
+}
+
+
+
+---------------------------------
+hala age GET be moshkel bar bokhore va 404 bede chi? bayad ye page e appropriate namayesh dade beshe 
+dar Customer.js dar then e aval 404 ro peyda kun
+dota rah darim ya new URL bezanim ba useNavigateya ye component 404 ijad kunim ke bayad ye js jadid ijad kuni
+path e 404 ro ham ke ghablan set up karde budmim dar App.js
+alan age bezani dar site browser --> http://localhost:3000/customers/5 --> cutomer 5 ke vojod nadare
+alan age enter kuni redirect nemishe!!!! ---> age be console ngah kuni dari status 500 migiri!!!---> backendemon status monaseb ro nemide pas backend ro dorst kunim
+
+dar view.py data=Customer.objects.get(pk=id) agar dat found nashe exception mindaze va vase hamin khataye server mide (500)
+alan age benvisi http://localhost:8000/api/customers/5 ke male server hast mibnini dastan ro va dar vaghe paeen tar az code e bala nemirim chun exception mindaze pas
+bayad bendazim to try catch ---> view.py ro dorost kun
+zemnan in page e 404 ke alan dar backend ijad shode ro dar production nemibinim chun alan dar development hastim debug mode true hast 
+(You’re seeing this error because you have DEBUG = True in your Django settings file. Change that to False, and Django will display a standard 404 page.)
+pas code dar view.py mishe --> zeman import kardan Http404 yadet nare
+
+    try:
+        data = Customer.objects.get(pk=id) # we don't wanna get all of them so we use get() instead of all() 
+    except Customer.DoesNotExist:
+        raise Http404('Customer does not exist') 
+
+
+alan age   http://localhost:3000/customers/5 ro run kuni bebin chi miad  
+hala front end emon a mdorost shod
+
+
+
+ravesh dovom : use kardan az state --> notFound va use kardan azash dar return entehaye Customer.js
