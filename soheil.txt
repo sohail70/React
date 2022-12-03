@@ -1601,3 +1601,12 @@ hala dg essential API endpoint vase crud ro dari
 match the front end to backend api endpoints
 dar front delete bezarim ke az backend delete kune va in dastana
 
+
+Customer.js va Customers.js ro taghir dadim 
+zemnan hamishe majboor nisti az arrow func use kuni mitooni name e func ro masalan dar onClick bezari va bad jaye dg func ro define kuni
+in bedarde jaee mikhoore ke mikhay az oon func jaye dg ham use kuni
+code customer.js avaz shode va deghat kun fetch ye do ne then bishtar nemikhad chun then dovom data migire vali vaghti delete mikuni dar backedn dar code views.py delete http no content barmigardone ke data ee nist ke bekhad biad to then
+vase hamin return json.response ham nemikhad
+
+
+alan boro dar customer va delete ro bezan delete mishe

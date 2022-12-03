@@ -30,9 +30,7 @@ export default function Customer(){
     } , []);
 
 
-    function deleteCustomer(){
-        console.log("Deleting");
-    }
+    
 
     return (
         <>
@@ -45,7 +43,23 @@ export default function Customer(){
             </div> 
             
                     : null}
-            <button onClick={deleteCustomer}>Delete</button> 
+            <button onClick={(e)=>{
+                console.log("Deleting...");
+                const url = baseUrl + 'api/customers/' + id; // id for which item you are deleting
+                fetch(url , {method:'DELETE'}).then((response)=>{
+                    if(!response.ok)
+                    {
+                        throw new Error("sth went wrong");
+                    }
+                    // return response.json();// ino niazi nist --> hcun then e paeen nizai nist
+                    //assume things went well
+                    navigate('/customers');
+                })
+                // .then((data)=>{}) // ino nizai nist chun dar Backend dar views.py dar baskhshe Delete Http_no_content ro miferestim pas data ee nemiad ke bakhym az in the nuse kunim
+                .catch(()=>{
+                        console.log(e);
+                    })
+            }}>Delete</button> 
             <br />
             <Link to='/customers'>Go back</Link>
         </>
