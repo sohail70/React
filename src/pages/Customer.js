@@ -46,7 +46,7 @@ export default function Customer(){
             <button onClick={(e)=>{
                 console.log("Deleting...");
                 const url = baseUrl + 'api/customers/' + id; // id for which item you are deleting
-                fetch(url , {method:'DELETE'}).then((response)=>{
+                fetch(url , {method:'DELETE', headers:{'Content-Type': 'application/json'}}).then((response)=>{
                     if(!response.ok)
                     {
                         throw new Error("sth went wrong");

@@ -1610,3 +1610,23 @@ vase hamin return json.response ham nemikhad
 
 
 alan boro dar customer va delete ro bezan delete mishe
+
+headers:{'Content-Type': 'application/json'} ino bara chi gozashtim ? --> in good practice hast ta har vaght delete kardim dar bakhshe netwrok headers dar inspect betooni bebini ke content type ee ke darim behesh request mdim az jense json hast
+dar edame ham body ezaf miknuim
+--------------------------------------------
+POST request --> add a new customer to the list --> ye modal barash ijad mikunim va ...
+az code haye AddEmployee ke ghablan dashtim use mikunim --> yani AddEmployee.js --> pas dar vaghe kule file ro copy paste kun faghat name esh ro bokon AddCustomer.js
+matn hasho avaz kun va ... zemnan bakhshe img ro ham hazf kun chun vase customer aks nazashtim
+export deafult ro ham behtare avale function bezarim ta inke akharesh benvisim --> khoshgel tare
+hala in component ro dar Customers.js ezaf kun
+hala chejoori customer add kunim ? this behaviour is defined in the parent component ---> dar AddEmployee ha hamin bood ---> dar parent AddEmployee func dar parent ijad kardim va bad pass down kardim be AddEmployee Modal
+parent kie? Customers.js
+AddCustomer e ke dar Customers.js ijad kardi ro chizaee ro bayad behesh bedi ta pass kune paeen
+va function e newCustomer ro ham balash ijad kun
+pattern e fetch ine ---> fetch().then().then().catch();
+zemnan be backend ham dar views.py deghat kun ---> dar def customers(request) bakhshe 'POST' chio return miknuim --> data ro
+bade inke khasti POST kuni dar front agar javab nadad boro dar inspect va netwrok --> ham Headers ro negah kun ham Payload ro negah kun --> masalan dar 
+payload name e ke add kardi ro bebin include shode ya na --> agar az front motevageh nashodi info haye backend ro dar terminal bebin
+hala ke post kardi bayad refresh kuni ta neshoon dade beshe --> alabte front end ro bayad dorost kuni ke belafasele neshoon bede --> ino jalase bad anjam midim
+----------------------------------------------
+khoob alan mikhaym open close modal ro az parent component anjam bedim na az khode modal component
