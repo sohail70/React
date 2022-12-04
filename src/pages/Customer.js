@@ -47,6 +47,7 @@ export default function Customer(){
        fetch(url , {method: 'POST' , headers: {'Content-Type': 'application/json'}  , body:JSON.stringify(tempCustomer)})
        .then((response)=>{return response.json()})
        .then((data)=>{
+            setCustomer(data.customer);
             setChanged(false); //vaghti successful shod false mikunim ta button ha hazf beshe bad az save kardan
             console.log(data); //updated object from the data base
        })

@@ -1671,3 +1671,4 @@ now create buttons
 button cancel asoone vali save sakhte chun request midim be backedn ta update kune data ro
 chun fetch request func esh large hast az external function e updateCustomer use mikunim va func ro jaye dg define mikunim
 hala ke kararo residi bade taghir age save kuni va bad refresh kuni mibini dade taghir karde dar data base
+nokte ine ke bayad updated tempCustomer copy beshe dar original cutstomer data vagarna age ye bar save kuni va bad dobare edit kuni va cancel zaher she va cancel ro bezani barmigarde be data avalie ke ma ino nemikhaym
