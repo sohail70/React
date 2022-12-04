@@ -1651,3 +1651,23 @@ allabte ghabla nham yechiz shabih be in roanjam dade boodim dar Employees.js dar
 alan dar Customers.js dar bakhshe then dar fetch age zire toggleshow benvisi console.log(data) va hala beri customer add kuni dar console mibini ke cusotmer e ke 
 ijad kardi hast pas bayad azash use kuni--> chejoori?
 injoori-->    setCustomers([...customers,data.customer]); // dar site e backend ham bebini data haro ma faghat bakhshe customer ro az data e json mikhaym --> json ya hamoon object notation
+
+
+ability to edit the customer:
+dar backedn bebin cheghadr api emoon cover mikune operation haro 
+dar views.py negah kuni:
+we have the ability to GET all of the customers and POST a new customer
+we have the ability to GET an individual customer and DELETE the customer
+and now we want to exploit the ability of update the customer by using POST --> next episode
+
+---------------------------------------------------------
+take a snapshot of what currently is coming from the data base and ahve a state for the updated data and when the person press save button we repalce the old data with new data
+dar Customer.js kar mikunim
+how to keep track of the previous values and new values? state! ---> tempCustomer use jun vase inke ye copy dg az data customer dashte bashi--> hame ina dar Customer.js hast
+nahve ijad save button --> chand rah darim: masalan state varibale ijad kuni ke changed shode va  --> state e changed ro dar Customer.js ijad kun
+conditionaly render sth if changed state is true --> show cancel and save button if changed is true
+compare the temp values and original value if they are the same want to set Changed to false ---> ino anjam nadadim velesh kun
+now create buttons
+button cancel asoone vali save sakhte chun request midim be backedn ta update kune data ro
+chun fetch request func esh large hast az external function e updateCustomer use mikunim va func ro jaye dg define mikunim
+hala ke kararo residi bade taghir age save kuni va bad refresh kuni mibini dade taghir karde dar data base
