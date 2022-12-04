@@ -1629,4 +1629,25 @@ bade inke khasti POST kuni dar front agar javab nadad boro dar inspect va netwro
 payload name e ke add kardi ro bebin include shode ya na --> agar az front motevageh nashodi info haye backend ro dar terminal bebin
 hala ke post kardi bayad refresh kuni ta neshoon dade beshe --> alabte front end ro bayad dorost kuni ke belafasele neshoon bede --> ino jalase bad anjam midim
 ----------------------------------------------
-khoob alan mikhaym open close modal ro az parent component anjam bedim na az khode modal component
+khoob alan mikhaym open close modal ro az parent component anjam bedim na az khode modal component --> control esh sakht mishe
+pas state ro dar parent ijad kunim va bad pass down mikunim value ro be child
+kare dg --> update automaically our list of customers when ever we add a new customers insert to DB 
+back end alan kar mikune vali alan bayad front ro dorost kunim ke niazi be refresh nabashe
+
+dar Customers.js Show state ro bezar va pass down kun be <AddCustomer ..../>
+hala dar child yani AddCusotmer.js dar useState e show va setshow mitoni meghdare ro az props set kuni
+we also want the ability to close the component from the parent --> dar Cysutomers.js hide the modal anjam bede --> pas ghablesh bayad dar AddCustomer.js 
+dar bakhshe modal dar show props.show benvisi ke tie beshe be parent
+ye function e toggleShow ham dar Customers.js bezar va befrestesh paeen dar props va dar AddCustomer.js use kun bejaye handleshow
+pas alan in functionlaity dar parent component omade jaye inke dar child bahse
+vase button haye AddCustomer ham mishe toggleShow ro jaye handleClose use kard
+alabte dar button e paeen faghat vaghti mikhaym close kunim ke add successful bashe
+az onClick handleClose ro hazf kun va dar Customers.js dar onjaee ke comment gozashtam hide the modal bia va toggleshow() ro bezar
+pas display e modal ro dar parent anjam dadim
+
+
+hala berim automatic update kardan e list vaghti
+allabte ghabla nham yechiz shabih be in roanjam dade boodim dar Employees.js dar function e newEmployee ke setEmployee karde boodim
+alan dar Customers.js dar bakhshe then dar fetch age zire toggleshow benvisi console.log(data) va hala beri customer add kuni dar console mibini ke cusotmer e ke 
+ijad kardi hast pas bayad azash use kuni--> chejoori?
+injoori-->    setCustomers([...customers,data.customer]); // dar site e backend ham bebini data haro ma faghat bakhshe customer ro az data e json mikhaym --> json ya hamoon object notation

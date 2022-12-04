@@ -6,6 +6,7 @@ import { baseUrl } from "../shared";
 
 export default function Customers(){
     const [customers , setCustomers] = useState();
+    const [show , setShow] = useState(false); //true ke bashe Modal dar AddCustomer open by default mishe vaghti page customer ro baz mikuni
     useEffect(()=>{
         console.log("Fetching...");
         fetch(baseUrl+'api/customers/') // forward slash akhar moheme
@@ -16,6 +17,9 @@ export default function Customers(){
         }) 
     },[]); //remmeber the empty dependency array --> to do this only once in initial load
 
+    function toggleShow(){
+        setShow(!show)
+    }
 
     function newCustomer(name , industry){
         
@@ -32,7 +36,10 @@ export default function Customers(){
         }).then((data)=>{
             // assume the add was successful
             // hide the modal
+            toggleShow();
             // make sure the list is updated appropriately
+            // console.log(data); 
+            setCustomers([...customers,data.customer]);
         })
         .catch((e)=>{
             console.log(e);
@@ -53,7 +60,7 @@ export default function Customers(){
                 )
             }) : null}
             </ul>
-            <AddCustomer newCustomer={newCustomer}/>
+            <AddCustomer newCustomer={newCustomer} show={show} toggleShow = {toggleShow}/>
         </>
     );
 }
