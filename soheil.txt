@@ -1694,3 +1694,9 @@ pas moshkeli ke momkene rokh bede ine ke ma dar UI darim name ro taghgir midim v
 age mikhay bebini ghashang az console.log(customer , tempCustomer); use kun
 rahe hal ine ke func e compareCustomers ro bebarim to useEffect
 and you can make it depend on the state that you wanna watch
+pas func e comapreCustomer ro pak kun va mohtaviate func ro beriz to useEffect e ke bala ghablan dorost karde budi 
+va useEffect ham automatically run mishe khodesh niazi nist dar onChange comaprecustomer ro bezari bahse --> chun aslan pakesh kardim dg nazaresh oonja
+
+
+deghat kun chun value customer khodesh az ye useEffect e dg dare miad pas error mide mige undefined hast customer --> rah hal chie? --> avale useEffect jadide benvis if(!customer) return; va if(!tempCustomer) return;
+alan dg initial load skip mishe
