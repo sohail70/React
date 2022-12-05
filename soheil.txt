@@ -1672,3 +1672,25 @@ button cancel asoone vali save sakhte chun request midim be backedn ta update ku
 chun fetch request func esh large hast az external function e updateCustomer use mikunim va func ro jaye dg define mikunim
 hala ke kararo residi bade taghir age save kuni va bad refresh kuni mibini dade taghir karde dar data base
 nokte ine ke bayad updated tempCustomer copy beshe dar original cutstomer data vagarna age ye bar save kuni va bad dobare edit kuni va cancel zaher she va cancel ro bezani barmigarde be data avalie ke ma ino nemikhaym
+
+---------------------------------------------------------
+change data and change it back --> what happens ---> the app must be smart enough to not ask for save data --> its a wasted API call!!
+this feature is optional 
+pas bayad old data ro zakhire kunim va compare kunim ba data jadid --> age the same hastan dg save ro neshooon nade!
+dar Customer.js dar tag e input dar attribute e onChange : func e compareCustomers ro bezar
+deghat kun az customer===tempCustomer use nakoni chun in yani are these the same exact objects in memory? they are obviously not!
+age complex object bashe mishe az package hayee use kard ke object haro compare kune ba external library ha
+vali alan attriburte haye in object ma ziad nist pas property hasho check mikunim
+az boolean flag use mikunim
+
+
+mohem ---> compareCustomers ro dar entehaye onChange goashtim
+moshkeli pish nemiad? chun ghablesh darim state haro dar onChange set mikunim
+va nkte MOHEM INE KE SET STATE IS ASYNCHRONOUS hast yani momken set state karde bashim (yani dar UI name ro msalan taghir dade bashim)
+ama hanoo in kamel anjam nashode ye dafe mirim to function e compareCustomers va compreCustomers ham dare check mikune variable customer ba tempCustomer yeki hastan ya na
+ke mibine yeki hastan!!!!! ---> ba inke ma ghablesh state ro set karde bodim ama fek mikune yeki hastan --> chera? chun set state async hast
+va hanooz karesh anjam nashode kamel
+pas moshkeli ke momkene rokh bede ine ke ma dar UI darim name ro taghgir midim vali hanooz save button show nakarde chun setChanged dar compareCustomer eshtebahan be false set shode --> dar amal albate bad az inke do ta character ro change kuni taze save show mishe
+age mikhay bebini ghashang az console.log(customer , tempCustomer); use kun
+rahe hal ine ke func e compareCustomers ro bebarim to useEffect
+and you can make it depend on the state that you wanna watch

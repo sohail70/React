@@ -16,9 +16,9 @@ export default function Customer(){
     
 
     useEffect(()=>{ // ta vaghti update mikunim input haye paeen dar return ro ye chizi benvise --> tempCustomer ye state ast va useEffect state change ro mifahme
-        console.log('customer' , customer);
-        console.log('temp customer' , tempCustomer); 
-        console.log(changed);
+        // console.log('customer' , customer);
+        // console.log('temp customer' , tempCustomer); 
+        // console.log(changed);
     });
 
     useEffect(()=>{
@@ -53,6 +53,21 @@ export default function Customer(){
        })
    } 
 
+    function compareCustomers(){
+        console.log(customer , tempCustomer);
+        let equal = true;
+        if(customer.name !== tempCustomer.name){
+            equal = false;
+        }
+
+        if(customer.industry !== tempCustomer.industry){
+            equal = false;
+        }
+
+        if(equal){
+            setChanged(false);
+        }
+    }
     return (
         <>
             {notFound? <><NotFound/> <p>The customer with id {id} was not found </p></>: null}
@@ -62,10 +77,12 @@ export default function Customer(){
                 <input className= "m-2 block px-2" type="text" value={tempCustomer.name} onChange={(e)=>{ //e is the event
                     setChanged(true);
                     setTempCustomer({...tempCustomer , name:e.target.value}) ; //...temCustomer ke id ro mizere az ghabl va e.target.value har chi to input gozashti ro minvise
+                    compareCustomers();
                 }}/>
                 <input className= "m-2 block px-2" type="text" value={tempCustomer.industry} onChange={(e)=>{
                     setChanged(true);
                     setTempCustomer({...tempCustomer , industry:e.target.value}) ;
+                    compareCustomers();
                 }}/>
                 {changed ? <><button onClick={(e)=>{
                     setTempCustomer({...customer}); //agar cancel ro bezani bargarde be halate avalie
