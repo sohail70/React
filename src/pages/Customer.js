@@ -68,8 +68,9 @@ export default function Customer(){
     } , []);
 
 
-   function updateCustomer()
+   function updateCustomer(e)
    {
+       e.preventDefault(); //vase inke vaghti Enter ro dar Form mizanim bad az taghire name ya industry page refresh nakune
        const url = baseUrl + 'api/customers/' + id;
        fetch(url , {method: 'POST' , headers: {'Content-Type': 'application/json'}  , body:JSON.stringify(tempCustomer)})
        .then((response)=>{
@@ -91,49 +92,81 @@ export default function Customer(){
    } 
 
     return (
-        <>
+        <div className="p-3">
             {notFound? <><NotFound/> <p>The customer with id {id} was not found </p></>: null}
             {customer ? 
             <div>
-                <p className= "m-2 block px-2" type="text">ID: {tempCustomer.id}</p> 
-                <input className= "m-2 block px-2" type="text" value={tempCustomer.name} onChange={(e)=>{ //e is the event
-                    setChanged(true);
-                    setTempCustomer({...tempCustomer , name:e.target.value}) ; //...temCustomer ke id ro mizere az ghabl va e.target.value har chi to input gozashti ro minvise
-                }}/>
-                <input className= "m-2 block px-2" type="text" value={tempCustomer.industry} onChange={(e)=>{
-                    setChanged(true);
-                    setTempCustomer({...tempCustomer , industry:e.target.value}) ;
-                }}/>
-                {changed ? <><button className="m-2" onClick={(e)=>{
-                    setTempCustomer({...customer}); //agar cancel ro bezani bargarde be halate avalie
-                    setChanged(false);
-                    }}>Cancel</button> {' '}
-                    <button className="m-2" onClick={updateCustomer}>Save</button> </>: null}
-            <button  onClick={(e)=>{
-                console.log("Deleting...");
-                const url = baseUrl + 'api/customers/' + id; // id for which item you are deleting
-                fetch(url , {method:'DELETE', headers:{'Content-Type': 'application/json'}}).then((response)=>{
-                    if(!response.ok)
-                    {
-                        throw new Error("sth went wrong");
-                    }
-                    // return response.json();// ino niazi nist --> hcun then e paeen nizai nist
-                    //assume things went well
-                    navigate('/customers');
-                })
-                // .then((data)=>{}) // ino nizai nist chun dar Backend dar views.py dar baskhshe Delete Http_no_content ro miferestim pas data ee nemiad ke bakhym az in the nuse kunim
-                .catch((e)=>{
-                        console.log(e);
-                        setError(e.message); // if there is a problem deleting it
+                <form className="w-full max-w-sm" id="customer" onSubmit={updateCustomer}>
+                    
+                    <p className= "block" type="text">ID: {tempCustomer.id}</p> 
+                    <div className="md:flex md:items-center mb-6">
+                        <div className="md:w-1/4">
+                            <label htmlFor="name">Name</label>
+                        </div>
+                        <div className="md:w-3/4">
+                            <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="name"  type="text" value={tempCustomer.name} onChange={(e)=>{ //e is the event
+                                setChanged(true);
+                                setTempCustomer({...tempCustomer , name:e.target.value}) ; //...temCustomer ke id ro mizere az ghabl va e.target.value har chi to input gozashti ro minvise
+                            }}/>
+                        </div>
+                    </div>
+
+
+                    <div className="md:flex md:items-center mb-6">
+                        <div className="md:w-1/4">
+                            <label htmlFor="industry">Industry</label>
+                        </div>
+
+                        <div className="md:w-3/4">
+                            <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="industry" type="text" value={tempCustomer.industry} onChange={(e)=>{
+                                setChanged(true);
+                                setTempCustomer({...tempCustomer , industry:e.target.value}) ;
+                            }}/>
+                        </div>
+                    </div>
+                </form>
+                {changed ?
+                        <div className="mb-2">
+                                <button className='bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mr-2' onClick={(e)=>{
+                                setTempCustomer({...customer}); //agar cancel ro bezani bargarde be halate avalie
+                                setChanged(false);
+                                }}>Cancel</button> {' '}
+                                <button form="customer" className='bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded' /*onClick={updateCustomer}*/ >Save</button> 
+                        </div>
+                        : null} {/*chun dar form az attribute e onSubmit use kardim inja dg niazi be onClick ={updateCusomter} nist*/}
+            <div>
+                <button className='bg-slate-800 hover:bg-slate-500 text-white font-bold py-2 px-4 rounded' onClick={(e)=>{
+                    console.log("Deleting...");
+                    const url = baseUrl + 'api/customers/' + id; // id for which item you are deleting
+                    fetch(url , {method:'DELETE', headers:{'Content-Type': 'application/json'}}).then((response)=>{
+                        if(!response.ok)
+                        {
+                            throw new Error("sth went wrong");
+                        }
+                        // return response.json();// ino niazi nist --> hcun then e paeen nizai nist
+                        setError(undefined); // alabte vaghti navigate mikunim dar paeen in khat redundant hast
+                        //assume things went well
+                        navigate('/customers');
                     })
-            }}>Delete</button> 
-            
+                    // .then((data)=>{}) // ino nizai nist chun dar Backend dar views.py dar baskhshe Delete Http_no_content ro miferestim pas data ee nemiad ke bakhym az in the nuse kunim
+                    .catch((e)=>{
+                            console.log(e);
+                            setError(e.message); // if there is a problem deleting it
+                        })
+                }}>Delete</button> 
+            </div> 
             </div> 
                     : null}
 
                 {error? <p>{error}</p> : null}
             <br />
-            <Link to='/customers'>Go back</Link>
-        </>
+
+            <Link  to='/customers'>
+                <button className='bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded no-underline'> 
+                    ← Go back
+                </button>
+            </Link>
+            
+        </div>
     );
 }

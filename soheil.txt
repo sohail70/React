@@ -1718,3 +1718,25 @@ alabte vase specific byayad bebinin backedn API et chio capable hast bargardone
 alan masalan dar code e backedn dar views.py dar def customer zire 'GET' age benvisi raise Exception() ro benvisi dar front age refresh ro dar page customer bezani 
 dar console STATUS e 500 miad --> server error dar network miad
 dar front dar useEffect e balaye update customer func  mishe nevesht if(!respone.ok) throw new Error('sth went wrong) va bad catch esh kard va dar then e dovom (yani onSuccess) setError(undefined) ro bezar
+-------------------------------------------------------------
+styling:
+
+behtare dar Customer.js input tag haro bezari to tag e form --> albate vajeb nist vali vaghti dari data submit mikuni behtare bezari to tag e form
+chun vaghti form dari mitoni behesh id bedi va reference esh kuni dar vaghe and you can make any button submit this form using the form attribute
+on vaght ba key e ENTER mitoni automat submit kuni form ro --> alabte ye badi dare ke form ro enter kuni submit ke beshe page ro refresh mikune
+rah hal ine ke bayad beri dar onClick e button e save va bad beri to func e update customer va input e 'e' ro bezari dar func va benvisi ---->  e.preventDefault()
+alabte jaye 'e' mishe name haye dg dad --> kulan dar course vase error va event az 'e' use kardim
+zemnan mishe dar tag e form attribute onSubmit={updateCustomer} ro gozasht jaye inke dar save button onClick ro set kuni be func e updateCustomer
+
+zeman label ke mizani vase name va industry az for use kun ke badan be input tag ha id bedi ke be ham associate beshan --> in kar vase bot va screen reader va autofill ham khoobe ta melat to page et dorost navigate kunan
+
+
+hala boro dar EditEmployee.js className e toye form onja ro copy paste kun dar inja ---> kholase hame tag haye div va classname haro copy kun inja va dar jaye monaseb ha m bezar
+
+deghat kun button e Goback nemikhaym dar div haye bala bere chun div haye bala condition shodan ro customer? pas ye div e birooni dorost mikunim ke hamaro poshesh bede ta betoonim hame ro 
+ye andaze chap chin kunim
+zeman goback, button nist balke link hast vase hamiin size esh ba baghie yeki nashode vali vase inke beshe mishe ye button inside of our link bezarim
+
+
+style e customer haye page e customer ro ham dar Customers.js anjam bede --> unordered list ro pak kun va jaye list item ha bezar div va dakhele link ye button bezar 
+va class name bede behesh ba className
