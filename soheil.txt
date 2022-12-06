@@ -1700,3 +1700,21 @@ va useEffect ham automatically run mishe khodesh niazi nist dar onChange comapre
 
 deghat kun chun value customer khodesh az ye useEffect e dg dare miad pas error mide mige undefined hast customer --> rah hal chie? --> avale useEffect jadide benvis if(!customer) return; va if(!tempCustomer) return;
 alan dg initial load skip mishe
+
+----------------------------------------------------------
+hal e iradate barname ---> alan masalan dar Customers edit kuni va name ro kolan hazf kuni save ro bezani form yeho mipare
+ye irade dg ine ke vaghti url ro mizani be chizi ke exist nist Delete button hanoz zaher mishe
+hale moshkele zaher shodan delete dar halate 404 --> dar Customer.js dar bakhshi ke nevshti customer? .... entehaye on ternary ro bebar bezar bad az Delete button ta moshkel hal she
+extension prettier code reformater ro nasb kun
+
+moshkele napadid shodan save va cancel vaghti name ro string khali mizari ine ke in ye joor bad request be backedn mahsoob mishe va bayad catch beshe vagarna dastorate paeen dar Customer.js run nemishan
+bayad moshkele updateCustomer func dar Customer.js ro hal kuni --> benvis if(!respone.ok) .... --> console.log(response) ro ham bebin ke bebini response e server chi borde 
+hala ke catch kardi check kuni dorost shode
+ {error? <p>{error}</p>: null}; ro ham minvisim ta display bokone error ro
+ hala age dorost benvisi va save ro bezani dorost mishe chun dar bakhshe then e dovom setError(undefined) ro gozashtim
+
+if(!response.ok) yani tamame chizhayee ke beyne 200 to 299 ranges nistan ro catch mikune --> vali mishe vase specific code check beshe 
+alabte vase specific byayad bebinin backedn API et chio capable hast bargardone 
+alan masalan dar code e backedn dar views.py dar def customer zire 'GET' age benvisi raise Exception() ro benvisi dar front age refresh ro dar page customer bezani 
+dar console STATUS e 500 miad --> server error dar network miad
+dar front dar useEffect e balaye update customer func  mishe nevesht if(!respone.ok) throw new Error('sth went wrong) va bad catch esh kard va dar then e dovom (yani onSuccess) setError(undefined) ro bezar
