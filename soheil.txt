@@ -1845,3 +1845,7 @@ dar customer.js vase in ezaf kardim ke age dar url masalan neveshtim  http://loc
 ham maro redirect kune be login page
 age id haye customerat yadet rafte mikhay dastrasi dashte bashi mitoni dar backedn dar views.py @persmission_classes ro hazf kuni ya az 
 postman ba token access use kuni
+
+hala berim login form ro dar front ijad kunim
+ye form mikhaym ba do ta input vase user name va password
+copy az customer.js kun
