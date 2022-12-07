@@ -12,7 +12,9 @@ export default function Login() //agar Login ro ba l kochak benvisi error mide
             return response.json();
         })
         .then((data)=>{
-            console.log(data);
+            localStorage.setItem('access' , data.access);
+            localStorage.setItem('refresh' , data.refresh);
+            console.log(localStorage); // bebin chi rafte to local storage ---> mifahmi ke token ye object hast ba  property
         })
 
     }

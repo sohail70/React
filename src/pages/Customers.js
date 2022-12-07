@@ -10,7 +10,8 @@ export default function Customers(){
     const navigate = useNavigate();
     useEffect(()=>{
         console.log("Fetching...");
-        fetch(baseUrl+'api/customers/') // forward slash akhar moheme
+        const url = baseUrl+'api/customers/';// forward slash akhar moheme
+        fetch(url , {method:'GET' , headers:{'Content-Type': 'application/json' , Authorization:'Bearer '+ localStorage.getItem('access')}}) // mishe method:Get ro nazasht chun GET deafult hast // chera 'Content-Type' toye single quote hast vali Authentication nist? chun Contetn-Type hyphen dare vasatesh
         .then((response)=>{
             if(response.status === 401)
             {

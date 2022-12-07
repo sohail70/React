@@ -1857,3 +1857,17 @@ vaghti form ro submit mikunim function login seda zade mishe ---> ke onja fetch 
 age password yadet raft ye super user dg dar backedn dorost kun
 
 hala ke mitoni login kuni --> bayad az access token use kuni ---> include the access token and include it in the request
+
+--------------------------------------------------------------------------------------------
+local storage ---> data base e ke samte browser client hast 
+masaaln ye data dari ke nemikhay samte server store kuni mitoni samte client dar local storage store kuni
+masalan access token ro mikhaym ba har request e ke client mide samte backedn include beshe yani througout our application mikhaym use beshe
+az dastore localStorage.setItem dar Login.js use kun --> ye key be onvane vorodi migire va data va age on key vojod ndashte bashe ijadesh mikune
+masalan site et ro light mode ya dark mode bashe in to local storage mitone zakhire shode bashe
+local storage is saved temporarly but its not guranteed to be saved for ever
+ba zadan localStorage.clear mitoni clear esh kuni
+in kari hast ke vaghti user log a user out mikuni inkaro mikuni
+
+
+kholase alandar Login.js fetch ro dorost kun va hala ke dorost kardi user pass ro bezan va bad ro Login button bezan va hala boro to page e customers mibnin namayesh mide
+ama va each customer hanooz dorost nakardim 
