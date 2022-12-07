@@ -75,9 +75,13 @@ export default function Customer(){
    {
        e.preventDefault(); //vase inke vaghti Enter ro dar Form mizanim bad az taghire name ya industry page refresh nakune
        const url = baseUrl + 'api/customers/' + id;
-       fetch(url , {method: 'POST' , headers: {'Content-Type': 'application/json'}  , body:JSON.stringify(tempCustomer)})
+       fetch(url , {method: 'POST' , headers:{'Content-Type': 'application/json' , Authorization: 'Bearer '+ localStorage.getItem('access')}  , body:JSON.stringify(tempCustomer)})
        .then((response)=>{
         //    console.log('response',response);
+            if(response.status === 401)
+            {
+                navigate('/login');
+            }
             if(!response.ok) throw new Error('Sth went wrong');
             return response.json();
         })
@@ -141,7 +145,12 @@ export default function Customer(){
                 <button className='bg-slate-800 hover:bg-slate-500 text-white font-bold py-2 px-4 rounded' onClick={(e)=>{
                     console.log("Deleting...");
                     const url = baseUrl + 'api/customers/' + id; // id for which item you are deleting
-                    fetch(url , {method:'DELETE', headers:{'Content-Type': 'application/json'}}).then((response)=>{
+                    fetch(url , {method:'DELETE',headers:{'Content-Type': 'application/json' , Authorization: 'Bearer '+ localStorage.getItem('access') }}).then((response)=>{
+                        if(response.status === 401)
+                        {
+                            navigate('/login');
+                        }
+                        
                         if(!response.ok)
                         {
                             throw new Error("sth went wrong");
