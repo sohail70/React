@@ -8,7 +8,7 @@ export default function Login() //agar Login ro ba l kochak benvisi error mide
     function login(e){
         e.preventDefault();
         const url = baseUrl + 'api/token/';
-        fetch(url).then((response)=>{
+        fetch(url,{method: 'POST' , headers:{'Content-Type': 'application/json'}, body: JSON.stringify({username: username , password: password})}).then((response)=>{
             return response.json();
         })
         .then((data)=>{

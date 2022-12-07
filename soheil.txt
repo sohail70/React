@@ -1853,3 +1853,7 @@ taghirate lazem ro bede
 hala button bezar va az style save button e ghablan use kun
 
 vaghti form ro submit mikunim function login seda zade mishe ---> ke onja fetch mikuni samte backedn
+
+age password yadet raft ye super user dg dar backedn dorost kun
+
+hala ke mitoni login kuni --> bayad az access token use kuni ---> include the access token and include it in the request
