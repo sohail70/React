@@ -1,10 +1,21 @@
 import { useState } from 'react';
+import { baseUrl } from '../shared';
 
 export default function Login() //agar Login ro ba l kochak benvisi error mide
 {
     const [username , setUsername] = useState();
     const [password , setPassword] = useState();
-    function login(){}
+    function login(e){
+        e.preventDefault();
+        const url = baseUrl + 'api/token/';
+        fetch(url).then((response)=>{
+            return response.json();
+        })
+        .then((data)=>{
+            console.log(data);
+        })
+
+    }
     return (
 
             <form className="m-2 w-full max-w-sm" id="customer" onSubmit={login}>
@@ -32,6 +43,8 @@ export default function Login() //agar Login ro ba l kochak benvisi error mide
                             }}/>
                         </div>
                     </div>
+
+                    <button className='bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded'>Login</button>
                 </form>
 
     )

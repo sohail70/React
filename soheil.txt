@@ -1849,3 +1849,7 @@ postman ba token access use kuni
 hala berim login form ro dar front ijad kunim
 ye form mikhaym ba do ta input vase user name va password
 copy az customer.js kun
+taghirate lazem ro bede
+hala button bezar va az style save button e ghablan use kun
+
+vaghti form ro submit mikunim function login seda zade mishe ---> ke onja fetch mikuni samte backedn
