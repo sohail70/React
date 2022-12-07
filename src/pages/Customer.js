@@ -41,7 +41,7 @@ export default function Customer(){
     useEffect(()=>{
         console.log('useEffect'); //dobar useEffect ro mibini chun strict mode et active hast --> felan bezar bashe chun dar dev mode hastim
         const url =baseUrl+'api/customers/' + id;
-        fetch(url)
+        fetch(url , { headers:{'Content-Type': 'application/json' , Authorization: 'Bearer '+ localStorage.getItem('access')}}) // method: 'GET' ro nazashtam chun deafult GET hast niazi nist benvisi
         .then((response)=>{
             if(response.status===404)
             {

@@ -1871,3 +1871,5 @@ in kari hast ke vaghti user log a user out mikuni inkaro mikuni
 
 kholase alandar Login.js fetch ro dorost kun va hala ke dorost kardi user pass ro bezan va bad ro Login button bezan va hala boro to page e customers mibnin namayesh mide
 ama va each customer hanooz dorost nakardim 
+customer.js ro ham dorost kun fetch esh ro --> hala mitoni to each customer ham beri ---> ama 401 unauthorized migiri vaghti mikhay save kuni dastan chie??
+har moghe 401 miad yadet bashe bayad be user begi ya redirect kuni be login page pas inam dorost kun aalan
