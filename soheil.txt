@@ -1740,3 +1740,108 @@ zeman goback, button nist balke link hast vase hamiin size esh ba baghie yeki na
 
 style e customer haye page e customer ro ham dar Customers.js anjam bede --> unordered list ro pak kun va jaye list item ha bezar div va dakhele link ye button bezar 
 va class name bede behesh ba className
+
+----------------------------------------------------------------
+JWT ---> json web tokens --> Logining in with an API ---> give a request to the server. give it user name and password--> the server give us token in response --> we include that without API request --> so we prevent just anybody to use our API
+we still have public facing which is out api endpoints and thats fine but we might have some private thing or customize things for an individual user
+toke is just a sequence of characters 
+
+we build the capability in the backend to log in and get that token and then in the front end we build that login page 
+felan mirim ro backend :
+
+tool e ke use mikunim Simple JWT hast --> https://django-rest-framework-simplejwt.readthedocs.io/en/latest/
+
+https://django-rest-framework-simplejwt.readthedocs.io/en/latest/getting_started.html#installation
+virtual env e backend ro activate kun va benvis :
+
+pip install djangorestframework-simplejwt
+
+
+bad boro dar settings.py
+va benvis ino:
+
+
+REST_FRAMEWORK = {
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+
+}
+
+
+ino dar page e installation tozih dade
+
+
+hala dara url et ye new path dorost kun
+
+import yadet nare --> from rest_framework_simplejwt.views import TokenObtainPairView , TokenRefreshView
+hala mitoni az in view ha use kuni
+
+  path('api/token/', TokenObtainPairView.as_view() , name="token_obtain_pair"), #path to get a token
+    path('api/token/refresh/', TokenRefreshView.as_view() , name='token_refresh'), #path to refresh the tokenm
+
+
+hala in path haro to browser check kun
+
+http://localhost:8000/api/token/
+page ro bebini use name o pass word onja hast
+POST request ham mitonim bokunim va vaghti ro POST click kuni refresh va access token behet mide --> click kun bebin
+user name va password hamooni hast ke bahash login pass kardi ghablan dar admin site
+boro be http://localhost:8000/admin/ va dar bakhshe Users bebin che user hayee tarif kardi
+
+yadAvari--> dar terminal backend benvis python3 mange.py createsuperuser ta ijad she
+
+user va pas hardo soheil hast
+
+
+{
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY3MDQzNTc5MywiaWF0IjoxNjcwMzQ5MzkzLCJqdGkiOiIxMzYyZDhjMDlkZGM0MDMyOTEyYTk2YTUyYjJhZGJjNyIsInVzZXJfaWQiOjF9.1IRcC-SGvzZOyHrojmfFILsm8ooMerQP4sSEl72g2DU",
+    "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcwMzQ5NjkzLCJpYXQiOjE2NzAzNDkzOTMsImp0aSI6ImJjM2NlZWQ2OWFjNjRlZTBhMDRhNDFhNjkwNjJjOGRhIiwidXNlcl9pZCI6MX0.3eb10QB0Mn-bZDTPWcb9HhZCuy_6SqdXzd4PDmJnBrE"
+}
+
+we will include this access token with a request to restricted API endpoints ---> user have to be authenticated to get access 
+masalan mikhaym user ha authenticate beshan ta be page a customer ha access kunan va interact kunan 
+SO WE HAVE TO RESTRRICT THOS API ENDPOINTS so that not anybody can use them --> az decorators use mikunim --> boro be views.py--> import permisiion_classes
+
+from rest_framework.response import Response #json 404 or html response
+from rest_framework.permissions import IsAuthenticated
+
+@permission_classes([IsAuthenticated]) ---> ino on bala benvis --> dar vaghe bezaresh bala har func ee ke niaz be login dare
+
+
+IMPRTANT ---> @api_view bayad bere balaye @permisiion_classes --> vagarna ignored mishe
+
+hala boro dar browser et test kun
+mitoni be har API endpoint e ke mikhay beri
+
+masalan  http://localhost:8000/api/customers/ ro bezani minivise authentication were not provided
+
+pas bayad oon token haee ke gerefti ro ba requestet include kuni
+alabte inkar dar backedn ke UI dorost hesabui nadare sakhte --> do rah dari ya az front inkaro bokoni ke ma fealn nemikhaym varede front beshim
+ya rahe dovom ine ke az ye API testing tool use kunim --> postmen --> allow us to include alot of extra stuff witth ut request
+download postman kun
+online version ham daran ke vase local host kar nemikune pas donwload kun --> https://www.postman.com/downloads/
+this is for testing your API like regression testing and making sure everythong works as expected
+keep track of list of aapi end points
+
+dar ghesmate workspace benvis url http://localhost:8000/api/customers Enter bezan
+dar bakhshe paeen authorization ro baz kun va dar drop down brearer token ro choose kun va paste kun --> age tool bedi momken access token invalid beshe
+kholase token access ro bede 
+
+http://localhost:8000/api/token/refresh ro ham test kun ---> refresh token ro POST kun ta new Acess token begiri--> chun original access tokenemoon expires frequently mishe va ba dashtan inrefresh dg niazi nist hamash log in kun harbar 
+dar vaghe mishe keep track kuni on refresh token ro va use it as needed
+dar vaghe age behet 30 min forsat bede age hanoz active bashi to site oon 30 min restart mikune --> vali age 30 min dor bashi ham access token va ham refresh token expire mishan
+---------------------------------------------------
+
+hala ke login ro dar backend setup kardim ba JWT --> hala mishe request for token kard
+login UI --> front end
+hala age beri be page e customer dar front end website --> yani
+dar inspect netwrok error 401 unauthorized migiri
+
+age be Customers.js onjaee ke useEffect zadi  negah kuni hich catch ee nazashtim --> ye navigate be login bezar vaghti error status 401 dad!
+kholase in navigate ro dar Customers.js va Customer.js ezaf kun 
+dar customer.js vase in ezaf kardim ke age dar url masalan neveshtim  http://localhost:3000/customers/12
+ham maro redirect kune be login page
+age id haye customerat yadet rafte mikhay dastrasi dashte bashi mitoni dar backedn dar views.py @persmission_classes ro hazf kuni ya az 
+postman ba token access use kuni

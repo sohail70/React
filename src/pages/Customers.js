@@ -1,16 +1,23 @@
 import { data } from "autoprefixer";
 import { useEffect , useState } from "react";
-import { json, Link } from "react-router-dom";
+import {Link, useNavigate } from "react-router-dom";
 import AddCustomer from "../components/AddCustomer";
 import { baseUrl } from "../shared";
 
 export default function Customers(){
     const [customers , setCustomers] = useState();
     const [show , setShow] = useState(false); //true ke bashe Modal dar AddCustomer open by default mishe vaghti page customer ro baz mikuni
+    const navigate = useNavigate();
     useEffect(()=>{
         console.log("Fetching...");
         fetch(baseUrl+'api/customers/') // forward slash akhar moheme
-        .then((response)=>{return response.json()}) //reponse is here -->mitoni {} va return ro ham nazari
+        .then((response)=>{
+            if(response.status === 401)
+            {
+                navigate('/login');
+            }
+            return response.json();
+        }) //reponse is here -->mitoni {} va return ro ham nazari
         .then((data)=>{ //data to assign to some state
             console.log(data);
             setCustomers(data.customers);  // cutomers array e dakhele object ro migirim ke bottonim roye array map bezanim

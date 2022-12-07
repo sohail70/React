@@ -48,6 +48,9 @@ export default function Customer(){
                 // navigate('/404'); //ravesh 1:redirect to a 404 page (new URL)
                 setNotFound(true); //ravesh 2: render a 404 compoent in this page
 
+            }else if (response.status === 401)
+            {
+                navigate('/login');
             }
             if(!response.ok)
             {
