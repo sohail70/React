@@ -15,7 +15,11 @@ export default function Customers(){
         .then((response)=>{
             if(response.status === 401)
             {
-                navigate('/login');
+                navigate('/login',{
+                    state:{
+                        previousUrl: '/customers',
+                    },
+                });
             }
             return response.json();
         }) //reponse is here -->mitoni {} va return ro ham nazari

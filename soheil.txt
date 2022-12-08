@@ -1874,3 +1874,30 @@ ama va each customer hanooz dorost nakardim
 customer.js ro ham dorost kun fetch esh ro --> hala mitoni to each customer ham beri ---> ama 401 unauthorized migiri vaghti mikhay save kuni dastan chie??
 har moghe 401 miad yadet bashe bayad be user begi ya redirect kuni be login page pas inam dorost kun aalan
 vase hal moshkele asli bayad headers ro dar fetch avali dar do ta fetch paeeni ham bezari
+
+nokte --> agedar console benvisi localStorage.access = 5 yani cherto pert benvisi hala dg access nadari va nemitoni save kuni va vaghti save ro bezani mibaratet be login
+
+---------------------------------------------------------
+ye moshkeli ke hast bad az login chera yedafe redirect nemikune be page va ma bayad click kunim ro page e customers???? in moshkel ro alan hal mikunim
+do ta option darim ya navigate back kunim be previous page e ke azash omade boodim ya navigate kunim be ye home page (masalan dashboard) --> dovomi sade tare vali avali recommended
+dovomi sadetare chun hamishe be ye path navigate mikunim and you don't have to worry about passing states and pads between components
+
+do ta chiz in jalase yad migirim:
+new hook -->use location 
+passing state with navigate hook 
+
+
+so how to send the information of where we came from to the login page? by passing state with navigate!
+dar vaghe navigate mojod dar Customers.js ro ye argument dovom behesh midim ke ye object hast ba property name e state
+dakhele state ham mitoni ye object dashte bashi ke har chi mikhay mitoni behesh bedi masaln previousUrl:'/customers' 
+alabte from the login perspective name esh mishe previousUrl vagarna alan ke dar customers.js hastim ke page e feli moon mishe! :)
+
+hala to page e Login.js chejoori in information ro begirim? --> az hooke e useLocation bayad use kunim az reac-router-dom'
+const location = useLocation()
+
+az useEffect ham use mikunim ta ye conslog ha mdashte bashim bebinim chi mire to location
+hala boro be page a customers va login kun va location log shode ro bebin ke state property dare
+so now when the user login we know where to send them
+hala login event handler ro boro tosh navigate kun be /customer page --> dar Login.js
+
+raveshhaye dg ham hast masalan mitoni az navigate be negative number kuni ke be users history beri --> alabte in khoob nist chun momkene bebaratet be previous website e ke tosh bodi

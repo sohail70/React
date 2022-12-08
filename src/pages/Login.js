@@ -1,10 +1,19 @@
-import { useState } from 'react';
+import { useState , useEffect} from 'react';
 import { baseUrl } from '../shared';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Login() //agar Login ro ba l kochak benvisi error mide
 {
     const [username , setUsername] = useState();
     const [password , setPassword] = useState();
+
+    const location = useLocation();
+    const navigate = useNavigate();
+    useEffect(()=>{
+        // console.log("location: ",location);
+        console.log(location.state.previousUrl); 
+    })
+
     function login(e){
         e.preventDefault();
         const url = baseUrl + 'api/token/';
@@ -15,6 +24,7 @@ export default function Login() //agar Login ro ba l kochak benvisi error mide
             localStorage.setItem('access' , data.access);
             localStorage.setItem('refresh' , data.refresh);
             console.log(localStorage); // bebin chi rafte to local storage ---> mifahmi ke token ye object hast ba  property
+            navigate(location.state.previousUrl);
         })
 
     }
