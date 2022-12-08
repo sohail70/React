@@ -1,6 +1,7 @@
-import { useState , useEffect} from 'react';
+import { useState , useEffect , useContext} from 'react';
 import { baseUrl } from '../shared';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { LoginContext } from '../App';
 
 export default function Login() //agar Login ro ba l kochak benvisi error mide
 {
@@ -9,6 +10,10 @@ export default function Login() //agar Login ro ba l kochak benvisi error mide
 
     const location = useLocation();
     const navigate = useNavigate();
+
+    const [loggedIn , setLoggedIn] = useContext(LoginContext);
+
+
     useEffect(()=>{
         // console.log("location: ",location);
         console.log(location?.state?.previousUrl); //chera ? gozashti chun age az page a login be login biay error mide chun null hast state dar location --->pas age null bood undefined beshe pas az ? use mikunim
@@ -24,6 +29,7 @@ export default function Login() //agar Login ro ba l kochak benvisi error mide
             localStorage.setItem('access' , data.access);
             localStorage.setItem('refresh' , data.refresh);
             console.log(localStorage); // bebin chi rafte to local storage ---> mifahmi ke token ye object hast ba  property
+            setLoggedIn(true);
             // console.log(location);
             // console.log(location?.state);
             // console.log(location?.state?.previousUrl);

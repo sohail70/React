@@ -8,7 +8,6 @@ const navigation = [
   { name: 'Employees', href: '/employees' },
   { name: 'Customers', href: '/customers'  },
   { name: 'Dictionary', href: '/dictionary'  },
-  { name: 'Calendar', href: '/other2'  }, //# yani refere be hamoon page
 ]
 
 function classNames(...classes) {
@@ -16,7 +15,7 @@ function classNames(...classes) {
 }
 
 export default function Header(props) {
-  const loggedIn = useContext(LoginContext);
+  const [loggedIn, setLoggedIn] = useContext(LoginContext);
 
   useEffect(()=>{
     console.log(loggedIn);
@@ -63,6 +62,19 @@ export default function Header(props) {
                         {item.name}
                       </NavLink>
                     ))}
+
+
+
+                    <NavLink
+                    // key={item.name} //no key is needed because we are not in a loop(map)
+
+                      to={loggedIn? '/logout' : '/login'} 
+                      className="block px-3 py-2 rounded-md text-base font-medium no-underline text-gray-300 hover:bg-gray-700 text-gray-300 hover:bg-gray-700 hover:text-red"
+                    >
+                      {loggedIn?  'Logout' : 'Login'}
+                    </NavLink>
+
+
                   </div>
                 </div>
               </div>
@@ -151,6 +163,18 @@ export default function Header(props) {
                     {item.name}
                     </NavLink>
               ))}
+
+
+                    <NavLink
+                    // key={item.name} //no key is needed because we are not in a loop(map)
+
+                      to={loggedIn? '/logout': '/login'} 
+                      className="block px-3 py-2 rounded-md text-base font-medium no-underline text-gray-300 hover:bg-gray-700"
+                    >
+                      {loggedIn?  'Logout' : 'Login'}
+                    </NavLink>
+
+
             </div>
           </Disclosure.Panel>
         </>

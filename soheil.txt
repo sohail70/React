@@ -1959,3 +1959,23 @@ ba in
   })
 
 dar Headers.js bebin chi gerefti ? mibini hamoon true ee ke dar App.js set kardi miad to Header.js
+khob hala ye bar dg inkaro bokonim faghat ye fuctionality bezarim ke user betoone toggle kune oon value ro
+masalan access token e user expire mishe va ma loggedIn ro be false set mikunim
+hala dar vaghe ham mikhaym value ro display kunim va ham change esh kunim
+age dar App.js tag ro injooori kuni ---> value={[loggedIn,setLoggedIn] --> hala mitoni har jaee az application et setLoggedIn ham bokoni
+hala masalan mirim be in value dar Customers.js access kunim 
+import useContext kun va baghie dastan
+
+hala ke do ta varibale dar context pas shabih be useState mishe.. yani:
+    const [loggedIn , setLoggedIn] = useContext(LoginContext);
+
+hala age unauthorized response az backedn begirim mitoonim toggle kunim in state ro va begim ke user logged in nist
+in belafasele UI ro taghir mide ke on chizi ke dare namayesh dade mishe taghir kune
+masalan dar Customers.js dar then e dovom momkene error unauthorized begire (401) pas onja setLoggedIn(false) kun
+
+
+
+hala ke Header.js ro ok kardi boro soraghe customer.js va context ro onja hanlde kun --> vase 401 ha bayad handle beshe ke har vaght 401gereftim setLoggedIn ro false kunim
+
+akharin taghir ine ke vaghti user login kard setLoggedIn ro true kunim --> pas login.Js ro dorst kun
+bayad dar then dovom benvisi chun then dovom vaghti miad ke successfull beshe va deghat kun ghabl az navigate kardan benvisi setLoggedIn ro

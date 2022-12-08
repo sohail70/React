@@ -1,8 +1,9 @@
 import { useParams , useNavigate, useLocation } from "react-router-dom";
-import { useEffect , useState } from "react";
+import { useEffect , useState  , useContext} from "react";
 import { Link } from "react-router-dom";
 import NotFound from "../components/NotFound";
 import { baseUrl } from "../shared";
+import { LoginContext } from "../App";
 
 
 export default function Customer(){
@@ -16,6 +17,8 @@ export default function Customer(){
     const navigate = useNavigate();
     
     const location = useLocation();
+
+    const [loggedIn , setLoggedIn] = useContext(LoginContext);
 
     useEffect(()=>{ // ta vaghti update mikunim input haye paeen dar return ro ye chizi benvise --> tempCustomer ye state ast va useEffect state change ro mifahme
         // console.log('customer' , customer);
@@ -51,6 +54,7 @@ export default function Customer(){
 
             }else if (response.status === 401)
             {
+                setLoggedIn(false);
                 navigate('/login',{
                     state:{
                         previousUrl: location.pathname,
