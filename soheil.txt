@@ -1931,3 +1931,31 @@ az optional chaining use kun
 location?.state?.previousUrl ---> alan dg age null bashe exception nemide balke undefined mishe
 pas rahe hal akhar mishe use kardan az ternary age value exist kard navigate kun behesh vagarnae be defatul page bere
             navigate(location?.state?.previousUrl ? location.state.previousUrl : '/customers'); ---> default page har chi mitone bashe : dashboard ya customer ya genral page
+
+
+-----------------------------------------------------------
+important ---> useContext hook --> if we are working with some state and we want this state to be used across the entire application that is where useContext can come in handy
+dg in jelloye pass props down multiple layers ro migire ke khoobe
+examples : theme across your websites --> kheli az example haye useContext dar internet marbot be hamin switching themes hast 
+for loging in ham use mishe jaye inke bebini to har component aya use login karde ya na: create a Context at the root level and sourround our entire application with that code
+
+so : 
+create the state at the global level and access it thoruhg one of the component
+boro dar App.js chun outer most component hast -->
+import {createContext} from 'react' ro use kun
+chera variable ro biron function e App() tarfi kardi? chun mikham export bezaram ghablesh ke hame ja import beshe
+export const LoginContext
+
+va <LoginContext.Provider value={}/> ro surround kun ro baghie  provider neveshtim chun mikhay ye value ee ro provide kunim ke accessible bashe az baghaie component ha
+az useState ham use mikunim vase value ===> ke bayad ba access token ke user maitain mikune associate beshe ke faln true gozashtim ta dorostesh kunim
+hala ke deliver kardim value haro be component ha chejoori dar component get esh kunim
+byad dar component ha import beshe useContext
+maslana dar Header.js aval begirimesh
+  const loggedIn = useContext(LoginContext); --> dar vaghe bayad name e context ro hamoon name a context bezarim ke dar App.js nevesthim --> pas bayad import ham beshe dg
+ba in 
+
+  useEffect(()=>{
+    console.log(loggedIn);
+  })
+
+dar Headers.js bebin chi gerefti ? mibini hamoon true ee ke dar App.js set kardi miad to Header.js
