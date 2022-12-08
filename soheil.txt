@@ -1923,3 +1923,11 @@ albate aval dar console log out kun ba neveshtane e localStorage.access = 10 -->
 
 hala in behaviour ro bayad copy kuni dar har page e ke redirect mishe be login page
 dar vs code ctrl shift f ro bezan va benvis navigate('/Login') ta peyda kuni kojaha redirect mishe va eslah kuni
+
+ye nokte --> age be login page directly biay va previousUrl nadashte bashi chi?
+alan age http://localhost:3000/login ro toye ye new tab bezani khata mide! --> chun previousUrl null hast --> migi na conslog.log (location) va .. kun
+moshkel az state hast yani location.state.previousUrl
+az optional chaining use kun
+location?.state?.previousUrl ---> alan dg age null bashe exception nemide balke undefined mishe
+pas rahe hal akhar mishe use kardan az ternary age value exist kard navigate kun behesh vagarnae be defatul page bere
+            navigate(location?.state?.previousUrl ? location.state.previousUrl : '/customers'); ---> default page har chi mitone bashe : dashboard ya customer ya genral page

@@ -11,7 +11,7 @@ export default function Login() //agar Login ro ba l kochak benvisi error mide
     const navigate = useNavigate();
     useEffect(()=>{
         // console.log("location: ",location);
-        console.log(location.state.previousUrl); 
+        console.log(location?.state?.previousUrl); //chera ? gozashti chun age az page a login be login biay error mide chun null hast state dar location --->pas age null bood undefined beshe pas az ? use mikunim
     })
 
     function login(e){
@@ -24,7 +24,10 @@ export default function Login() //agar Login ro ba l kochak benvisi error mide
             localStorage.setItem('access' , data.access);
             localStorage.setItem('refresh' , data.refresh);
             console.log(localStorage); // bebin chi rafte to local storage ---> mifahmi ke token ye object hast ba  property
-            navigate(location.state.previousUrl);
+            // console.log(location);
+            // console.log(location?.state);
+            // console.log(location?.state?.previousUrl);
+            navigate(location?.state?.previousUrl ? location.state.previousUrl : '/customers');
         })
 
     }
