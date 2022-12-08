@@ -1,7 +1,7 @@
 
 import {useState, useEffect } from "react"
 import { v4 as uuidv4 } from 'uuid';
-import { useParams , useNavigate , Link} from "react-router-dom";
+import { useParams , useNavigate , Link , useLocation} from "react-router-dom";
 import NotFound from "../components/NotFound";
 import DefinitionSearch from "../components/DefinitionSearch";
 
@@ -13,6 +13,9 @@ export default function Definition(){
     //console.log(useParams());
     let {search} = useParams();
     const navigate = useNavigate();
+    const location = useLocation();
+
+
     useEffect(()=>{
         // const url = 'http://httpstat.us/404';
         // const url = 'http://www.aaaabbbb.com';
@@ -28,7 +31,7 @@ export default function Definition(){
                     // navigate('/404'); // jaye in az componet use kun chun redirect url ro taghir mide vali ma mikhaym kalame wrong emon ham namayesh dade beshe
                 } else if(response.status===401)
                 {
-                    navigate('/login');
+
                 } else if(response.status===500)
                 {
                     // setServerError(true); //badan benvis age khasti --> mesle setNotFound

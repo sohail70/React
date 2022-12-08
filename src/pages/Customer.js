@@ -1,4 +1,4 @@
-import { useParams , useNavigate, Navigate } from "react-router-dom";
+import { useParams , useNavigate, useLocation } from "react-router-dom";
 import { useEffect , useState } from "react";
 import { Link } from "react-router-dom";
 import NotFound from "../components/NotFound";
@@ -15,6 +15,7 @@ export default function Customer(){
 
     const navigate = useNavigate();
     
+    const location = useLocation();
 
     useEffect(()=>{ // ta vaghti update mikunim input haye paeen dar return ro ye chizi benvise --> tempCustomer ye state ast va useEffect state change ro mifahme
         // console.log('customer' , customer);
@@ -50,7 +51,10 @@ export default function Customer(){
 
             }else if (response.status === 401)
             {
-                navigate('/login');
+                navigate('/login',{
+                    state:{
+                        previousUrl: location.pathname,
+                    },});
             }
             if(!response.ok)
             {
@@ -80,7 +84,10 @@ export default function Customer(){
         //    console.log('response',response);
             if(response.status === 401)
             {
-                navigate('/login');
+                navigate('/login',{
+                    state:{
+                        previousUrl: location.pathname,
+                    },});
             }
             if(!response.ok) throw new Error('Sth went wrong');
             return response.json();
@@ -148,7 +155,10 @@ export default function Customer(){
                     fetch(url , {method:'DELETE',headers:{'Content-Type': 'application/json' , Authorization: 'Bearer '+ localStorage.getItem('access') }}).then((response)=>{
                         if(response.status === 401)
                         {
-                            navigate('/login');
+                            navigate('/login',{
+                                state:{
+                                    previousUrl: location.pathname,
+                                },});
                         }
                         
                         if(!response.ok)

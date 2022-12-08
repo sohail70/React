@@ -1916,6 +1916,10 @@ pas dar nahayt mishe
                     state:{
                         previousUrl: location.pathname,
                     },
+                    }
 
 khoob hala test kun 
 albate aval dar console log out kun ba neveshtane e localStorage.access = 10 --> ye addade ghalat dar vaghe ---> va bad login kun
+
+hala in behaviour ro bayad copy kuni dar har page e ke redirect mishe be login page
+dar vs code ctrl shift f ro bezan va benvis navigate('/Login') ta peyda kuni kojaha redirect mishe va eslah kuni
