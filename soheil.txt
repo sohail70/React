@@ -1900,4 +1900,22 @@ hala boro be page a customers va login kun va location log shode ro bebin ke sta
 so now when the user login we know where to send them
 hala login event handler ro boro tosh navigate kun be /customer page --> dar Login.js
 
-raveshhaye dg ham hast masalan mitoni az navigate be negative number kuni ke be users history beri --> alabte in khoob nist chun momkene bebaratet be previous website e ke tosh bodi
+raveshhaye dg ham hast masalan mitoni az navigate be negative number kuni ke be users history beri --> alabte in khoob nist chun momkene bebaratet be previous website e ke tosh bodi1
+
+alabte inke /customers ro dar Customers.js hardcode kardim khoob nist
+balke bayad begim previousUrl: currentUrl jaye inke benvisim prevousUrl:'/customers'
+hala chejoori befahmim alan to kodom page hast user?
+age deghat mikardi be oon location e ke dar useEffect console.log kardim ye property dare be name e pathname ---> location.pathname ro bayad set kuni
+pas bayad az useLocation dar Customers.js ham use kuni
+
+dar kule har kari ba link navigate and routing darim anjam midim az reac-router-dom miad
+
+pas dar nahayt mishe 
+
+                navigate('/login',{
+                    state:{
+                        previousUrl: location.pathname,
+                    },
+
+khoob hala test kun 
+albate aval dar console log out kun ba neveshtane e localStorage.access = 10 --> ye addade ghalat dar vaghe ---> va bad login kun

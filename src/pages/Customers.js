@@ -1,6 +1,6 @@
 import { data } from "autoprefixer";
 import { useEffect , useState } from "react";
-import {Link, useNavigate } from "react-router-dom";
+import {Link, useNavigate , useLocation } from "react-router-dom";
 import AddCustomer from "../components/AddCustomer";
 import { baseUrl } from "../shared";
 
@@ -8,6 +8,7 @@ export default function Customers(){
     const [customers , setCustomers] = useState();
     const [show , setShow] = useState(false); //true ke bashe Modal dar AddCustomer open by default mishe vaghti page customer ro baz mikuni
     const navigate = useNavigate();
+    const location = useLocation();
     useEffect(()=>{
         console.log("Fetching...");
         const url = baseUrl+'api/customers/';// forward slash akhar moheme
@@ -17,7 +18,7 @@ export default function Customers(){
             {
                 navigate('/login',{
                     state:{
-                        previousUrl: '/customers',
+                        previousUrl: location.pathname,
                     },
                 });
             }
