@@ -2006,3 +2006,56 @@ hala jaye inke setLoggedIn ro toye tag dar App.js be paeen pass kuni in function
 alabte chera be nazaret Headers.js error nadad vaghti name oon chizi ke pass down kardi avaz shod? chun name e ke pass down mikuni mohem nist balke vaghti az useContext estefade kardi ke ono catch kuni be che nami set esh kardi? setLoggedIn
 
 dar Headers.js vase navlink haye mobile version ham haminkaro bokon mitooni copy paste kuni
+----------------------------------------------------------------------------------------------------
+
+keep the user logged in for a longer time by using the refresh token
+access token zood expire mishe garche mishe dar backend configure beshe ke zook expire nashe masalan age every 5 minutes expire beshe shoma bayad har 5 min login kuni 
+vali dar kul bayad joori bashe ke age bad az akharin use et az site ye modat zamani elapsed karde bashe bayad expire beshe--> in ro refresh token be maejaze mide ke anjam bedim
+dar vaghe refresh token will give you new access token every couple of minutes to login over and over again
+age kheili az site dor bashe refresh token ham expire mikune va bayad new access and refresh token begiri dobare
+har bar ke az refresh token vase gereftane new access token use mikuni ye new refresh token ham behet mide as well!
+yani age masalana refresh token age bad az 1 day expire mishe va shoma ye roz azash dari use mikuni akharin refresh token e ke gerefti ye roz bad esh expire mishe!
+ravesh vase implementation ziade ma ye loop dorost mikunim ke har chan min ye bar run beshe va new access token and a new refresh token begirim
+inke refresh token ro koja store kunim beyne olama ekhtelaf nazare vali dar localStorage store mikunim ye website e ham ino recommend karde
+alabte age high security application dari dorost mikuni in ravesh khoob nist chun secure nist
+dar kul use kardan az localStorage dar refresh kardan e page va new tab ha consistent hast
+vali khub cross-site scriptin attack age bokunan be site mitonnan token hae ke dar local Storage store shode ro retrieve kunan --> ba inkar mitonan azash use bokunan
+ta access token jadid begiran
+alabte ye rahe hal work around reduce kardan absolute token expiration time hast vase refresh tokens
+dar in halta dg refresh token et masalan vase ye week survive nakune --> mitoni kari kuni ke bad az masalan few hours expire beshe ya one day
+this will reduce the chance of sth bad happening vali dar kul donbale alternative haye dg bash --> other storage options
+als you can configure the backedn software to keep track of any invalidated token yani az refresh token use kun vase gereftan new access and new refresh token 
+va ghabli ro invalid kun--> pas ham expire tokens by time darim va ham expire tokens by use ham darim
+
+
+
+Khoob boro be http://localhost:8000/api/token/ va user pass soheil soheil ro bezan va refresh token ro copy kun
+boro hala be http://localhost:8000/api/token/refresh/ va refresh e ke gerefti (dakhele quote )ro paste kun ta access token begiri
+alabte alan negah kuni mibini ke faghat access dade vali mitonni config kuni ke refresh ro ham jadid kune
+https://django-rest-framework-simplejwt.readthedocs.io/en/latest/settings.html ro baz kun setting ro negah kun
+alan     'ROTATE_REFRESH_TOKENS': False, hast va bayad true beshe
+alabte bayad oon dictionary simple jwt ro copy past kunim aval darsettings.py dar backend code emon
+
+hala dobare dar backedn boro refresh ro POST kun bebin aya refresh token ham jadid mide behet ya na
+kar mikune va behet ham access token mide va ham refresh token
+ama nokte ine ke refresh token ghadimi ro dobare bezani baz behet access va refresh jadid mide--> albate ta zamani ke expire beshe
+alabte deghat kun horof akhare token taghir mikune avayelesh shayad sabet bashe 
+
+hashie --> 'SIGNING_KEY': SECRET_KEY, ke dar oon dictionary dar oon site hast az SERCRET_KEY use mikune ke dar setting.py dar backedn set shode
+nokte mohem ine ke in SECRET_KEY dar setting.py et ro dar version controlet dar github gozashti ke nabayad mizashti
+alabte mishe ino ham refresh key kard ke dar course e backedn bistar migim inja na --> dar kul dar production remove mikunim secret key mikunim
+chun app et age open source bashe people mitonan genrate token kunan --> age app et close source app dari mohem nist
+
+hala berim soraghe front end:
+do rah darim ke ma rahe dovom ro migim: --> use kardan az loop: har chand minutes run mishe va new access and refresh token migirim
+age access token et har 5 min expire mishe ma loop ro har 4 min masalan execute mikunim
+
+ravesh dg ine ke tebghe mamol request bedi ta zamani ke unauthorized 401 begiri ke yani access token et expire shode
+and that is when you get a access token with a refresh token then you will re execute the original request
+pas dar kul shod 3 ta request ---> 1) original request(401 unauthorized)  2) getting a new access token 3)repeating the original request
+va inkara ham automatically behind the scene anjam migire va user expercience ro vase user kharab nemikune va dar vaghe darim request for token mikunim vaghti absolutely need to hastim
+
+ma ravesh loop ro mirim ravesh dg ro khodet dost dari emtehan kun
+
+khoob hala berim dar App.js --> az useEffect va setInterval use mikunim ke har 5000ms yani 5s ye kari anjam beshe --> vase test kardan gozashtim 5000 
+vagarna badan dorstesh mikunim

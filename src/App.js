@@ -8,11 +8,39 @@ import Definition from './pages/Definition';
 import NotFound from './components/NotFound';
 import Customer from './pages/Customer';
 import Login from './pages/Login';
-import { createContext ,useState} from 'react';
+import { createContext ,useEffect,useState} from 'react';
+import { baseUrl } from './shared';
 
 export const LoginContext = createContext();
 
 function App() {
+  
+  useEffect(()=>{
+    if(localStorage.refresh) // ta age user logout kard chun oonja local storage ro clear kardim dg in run nemishe va khoob ham hast ke vaghti logout kardim in run nashe hamash
+    {
+      const minutes = 1000*60 ; //one minute
+      setInterval(()=>{
+        const url = baseUrl+'api/token/refresh/'; //forward slash akhar ro nazari unexpected token eroor mide
+        fetch(url,{
+          method:'POST',
+          headers:{
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            refresh: localStorage.refresh,
+          })
+        }).then((response)=>{
+          return response.json();
+        }).then((data)=>{
+          console.log("TOKEN",data);
+          localStorage.access = access;
+          localStorage.refresh = refresh;
+          setLoggedIn(true); // just to be sure --> malom nist age bezarim nazarim aya iradi rokh mide ya na? :)
+        })
+      },minutes*3); //har 3 minutes in useEffect run she
+    }
+  },[]);
+  
   const [loggedIn , setLoggedIn] = useState(localStorage.access ? true : false);
 
   function changedLoggedIn(value){
