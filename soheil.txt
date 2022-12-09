@@ -1979,3 +1979,30 @@ hala ke Header.js ro ok kardi boro soraghe customer.js va context ro onja hanlde
 
 akharin taghir ine ke vaghti user login kard setLoggedIn ro true kunim --> pas login.Js ro dorst kun
 bayad dar then dovom benvisi chun then dovom vaghti miad ke successfull beshe va deghat kun ghabl az navigate kardan benvisi setLoggedIn ro
+
+
+----------------------------------------------------------------------------------------------------
+dar App.js meghdare useState(true) hast yani default vaghti aval miri be page true hast
+az tarafi false ham agar bezarim dorost nist chun age login kuni va badeh beri toye ye new tab page ro baz kuni dar navbar jaye logout neveshte login 
+vali dar kul true behtare chun dar badtarin halat mibaratet be login page
+behtarin rahe hal check for local storage for an access token hast --> in khoobe --> tanha giresh ine ke may be expired beshe
+long term goal ma mishe in ke az refresh token use kunim va if it works stay logged in bashim otherwise send to login page
+ama alan ke hamash true hast darim assume mikunim ke yeki az in do (ya login ya logout) dorste
+kholase check kun dar App.js ke localStorage.access agar darim true bashe vagarna false bashe
+alan ke App.js ro dorost kardi hala browswer ro check kun login kun va bad boro dar tab jadid dobare be site hala mibini logout monde ro navbar chun check karde localStorage ro 
+albate in hanooz gir dare? chera? chun momkene ba site kar nakuni va access token et expire beshe vali to safhe dar navbar neveshte logout(yani hanoo login hasti)
+va belafasele ke roye protected route ha click kuni taze behet mige login dar navbar
+
+khoob hala berim localStorage ro clear kunim vaghti logout mikunim
+
+mishe dar Headers.js vase navlink e login/logout ye onClick={loggedIn ? ()=>{} : null} bezarim va arrow function ro por kunim ama in ravesh sakhte ye ravesh dg ro mirim:
+ye condition mizarim ke age loggedIn boodim in navlink active beshe agar naboodim ye navlink e dg
+kholase Headers.js ro dorst kun va teranry haro hazf kun sade tar benviseshoon
+hala mitooni ye custome onClick vase har kodom joda dashte bashi ke dg ba ternary pichide nashe
+
+how to clear localStorage when ever we set logged in to false
+ye function dar App.js doorst kun be name e changeLoggedIn
+hala jaye inke setLoggedIn ro toye tag dar App.js be paeen pass kuni in function ro pass kun va azash use kun chun in functiion ham setLoggedIn mikune va ham dar sorate lozom clear local storage mikune ke dg masalan access token et masalan 5 nabashe chun 5 ro gozashte bodim ke manually logout kunim vali belafasele clear esh ham kardim alan
+alabte chera be nazaret Headers.js error nadad vaghti name oon chizi ke pass down kardi avaz shod? chun name e ke pass down mikuni mohem nist balke vaghti az useContext estefade kardi ke ono catch kuni be che nami set esh kardi? setLoggedIn
+
+dar Headers.js vase navlink haye mobile version ham haminkaro bokon mitooni copy paste kuni

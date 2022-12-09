@@ -64,16 +64,32 @@ export default function Header(props) {
                     ))}
 
 
+                        {
+                          loggedIn? 
+                                <NavLink
+                                // key={item.name} //no key is needed because we are not in a loop(map)
 
-                    <NavLink
-                    // key={item.name} //no key is needed because we are not in a loop(map)
+                                  to={'/login' } //vaghti logout mikuni bayad be login page redirect beshi
+                                  className="block px-3 py-2 rounded-md text-base font-medium no-underline text-gray-300 hover:bg-gray-700 text-gray-300 hover:bg-gray-700 hover:text-red"
+                                  onClick={()=>{
+                                    // console.log("Logging out ....");
+                                    setLoggedIn(false);
+                                    localStorage.clear(); // chun localstorage ro clear kardim age vaghti login hastim ye page baz kunim baz mige shoma login hasti --> age ino nazshte boodi ba inke logout kardi ba ham dar page e jadid migot login hasti
+                                  }}
+                                >
+                                  Logout
+                                </NavLink>
+                              :
 
-                      to={loggedIn? '/logout' : '/login'} 
-                      className="block px-3 py-2 rounded-md text-base font-medium no-underline text-gray-300 hover:bg-gray-700 text-gray-300 hover:bg-gray-700 hover:text-red"
-                    >
-                      {loggedIn?  'Logout' : 'Login'}
-                    </NavLink>
+                          <NavLink
+                          // key={item.name} //no key is needed because we are not in a loop(map)
 
+                            to={'/login'} 
+                            className="block px-3 py-2 rounded-md text-base font-medium no-underline text-gray-300 hover:bg-gray-700 text-gray-300 hover:bg-gray-700 hover:text-red"
+                          >
+                            Login
+                          </NavLink>
+                        }
 
                   </div>
                 </div>
@@ -164,18 +180,33 @@ export default function Header(props) {
                     </NavLink>
               ))}
 
+                        {
+                          loggedIn? 
+                                <NavLink
+                                // key={item.name} //no key is needed because we are not in a loop(map)
 
-                    <NavLink
-                    // key={item.name} //no key is needed because we are not in a loop(map)
+                                  to={'/login' } //vaghti logout mikuni bayad be login page redirect beshi
+                                  className="block px-3 py-2 rounded-md text-base font-medium no-underline text-gray-300 hover:bg-gray-700"
+                                  onClick={()=>{
+                                    // console.log("Logging out ....");
+                                    setLoggedIn(false);
+                                    localStorage.clear(); // chun localstorage ro clear kardim age vaghti login hastim ye page baz kunim baz mige shoma login hasti --> age ino nazshte boodi ba inke logout kardi ba ham dar page e jadid migot login hasti
+                                  }}
+                                >
+                                  Logout
+                                </NavLink>
+                              :
 
-                      to={loggedIn? '/logout': '/login'} 
-                      className="block px-3 py-2 rounded-md text-base font-medium no-underline text-gray-300 hover:bg-gray-700"
-                    >
-                      {loggedIn?  'Logout' : 'Login'}
-                    </NavLink>
+                          <NavLink
+                          // key={item.name} //no key is needed because we are not in a loop(map)
 
-
-            </div>
+                            to={'/login'} 
+                            className="block px-3 py-2 rounded-md text-base font-medium no-underline text-gray-300 hover:bg-gray-700"
+                          >
+                            Login
+                          </NavLink>
+                        }
+      </div>
           </Disclosure.Panel>
         </>
       )}

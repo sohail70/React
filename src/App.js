@@ -13,9 +13,18 @@ import { createContext ,useState} from 'react';
 export const LoginContext = createContext();
 
 function App() {
-  const [loggedIn , setLoggedIn] = useState(true);
+  const [loggedIn , setLoggedIn] = useState(localStorage.access ? true : false);
+
+  function changedLoggedIn(value){
+    setLoggedIn(value);
+    if( value == false)
+    {
+      localStorage.clear(); // to remove the access and refresh token when ever the user is logged out --> Deghat kun ke in kule localStorage ro pak mikune pas age az localStorage vase darkmode va light mode dari use mikuni behtarespecifically access and refresh token ro delete kuni
+    }
+  }
+
   return (
-  <LoginContext.Provider value={[loggedIn,setLoggedIn]}>
+  <LoginContext.Provider value={[loggedIn,changedLoggedIn]}>
     <BrowserRouter>
       <Header>
         <Routes>
