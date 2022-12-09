@@ -16,10 +16,9 @@ export const LoginContext = createContext();
 function App() {
   
   useEffect(()=>{
-    if(localStorage.refresh) // ta age user logout kard chun oonja local storage ro clear kardim dg in run nemishe va khoob ham hast ke vaghti logout kardim in run nashe hamash
-    {
-      const minutes = 1000*60 ; //one minute
-      setInterval(()=>{
+    function refreshTokens(){
+
+      if(localStorage.refresh){ // ta age user logout kard chun oonja local storage ro clear kardim dg in run nemishe va khoob ham hast ke vaghti logout kardim in run nashe hamash
         const url = baseUrl+'api/token/refresh/'; //forward slash akhar ro nazari unexpected token eroor mide
         fetch(url,{
           method:'POST',
@@ -37,8 +36,15 @@ function App() {
           localStorage.refresh = refresh;
           setLoggedIn(true); // just to be sure --> malom nist age bezarim nazarim aya iradi rokh mide ya na? :)
         })
-      },minutes*3); //har 3 minutes in useEffect run she
+      } 
     }
+
+    
+      const minutes = 1000*60 ; //one minute
+      refreshTokens(); // ta bare aval ham immediately execute she va 3 minutes sabr nakunim hamoon aval
+      setInterval(refreshTokens,minutes*3); //har 3 minutes in useEffect run she
+
+    
   },[]);
   
   const [loggedIn , setLoggedIn] = useState(localStorage.access ? true : false);
