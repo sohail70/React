@@ -2059,3 +2059,46 @@ ma ravesh loop ro mirim ravesh dg ro khodet dost dari emtehan kun
 
 khoob hala berim dar App.js --> az useEffect va setInterval use mikunim ke har 5000ms yani 5s ye kari anjam beshe --> vase test kardan gozashtim 5000 
 vagarna badan dorstesh mikunim
+
+bad az dorost kardan App.js dar front ke har 3 minutes refresh mikunimva localStorage.access va localStorage.refresh
+ro beroz mikunim mirim dar backend va time e access token ro 
+access token liftime ro 15 mintes kun
+zeman bayad import ham kuni minutes ro dar setting.py
+
+--------------------------------------------------------------------------------------
+Registeration page ---> register a user ---> its complicated
+
+functionality to add another user to user table ---> backedn --> badan ham front esh ro anjam midim
+
+backedn:
+mirim dar url.py ye path jadid dorost mikunim api/register
+dar views.py ham def register ro ijad kun
+
+how to create a user ? in the serializer.py 
+class UserSerializer
+
+bad az neveshtan va por kardane def register dar views.py boro be http://localhost:8000/api/register
+va hala onja dar Content por kun: deghat kun comma akhar ro nazari chun error mide
+
+{
+   "email" : "soheil.e.nia@gmail.com",
+   "username" : "soheil70",
+   "password" :  "soheil70"
+}
+
+hala boror be admin site dar backend
+http://localhost:8000/admin
+va hala user jadid ro mibini
+
+
+khub hala mikhaym ye login form dorost kunim alabate dar asl registration form hast va jaye inke be login endpoint berim
+mirim be regester end point e backend emon and include the user name pass word and email in the body
+pas berim to front va az roye Login.js ye compy migirim va mizarim to Register.js va maghadir ro taghir bede
+
+bara inke ziad code Register.js ro taghir nadim dar backend def Register dar views.py ro vasash refresh and access token ham gozashtim ke behemoon hengame response inaro ham bede 
+mitoni dar backedn website dobare ye new user register kuni ta bebini bad az POST chi mide behemoon
+
+
+hala berim dar App.js path ro ham ezaf kunim
+bad az takmil Register.js mitoni beri be in page --> http://localhost:3000/register va ye user register kuni --> zeman in functionality ro ham gozashtim ke age vared i page beshi 
+be sorate automatically logout kuni

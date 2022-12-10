@@ -10,7 +10,7 @@ import Customer from './pages/Customer';
 import Login from './pages/Login';
 import { createContext ,useEffect,useState} from 'react';
 import { baseUrl } from './shared';
-
+import Register from './pages/Register';
 export const LoginContext = createContext();
 
 function App() {
@@ -32,8 +32,8 @@ function App() {
           return response.json();
         }).then((data)=>{
           console.log("TOKEN",data);
-          localStorage.access = access;
-          localStorage.refresh = refresh;
+          localStorage.access = data.access;
+          localStorage.refresh = data.refresh;
           setLoggedIn(true); // just to be sure --> malom nist age bezarim nazarim aya iradi rokh mide ya na? :)
         })
       } 
@@ -68,6 +68,7 @@ function App() {
           <Route path='/dictionary' element={<Dictionary/>}/>
           <Route path='/dictionary/:search' element={<Definition/>}/>
           <Route path='/login' element={<Login/>}/>
+          <Route path='/register' element={<Register/>}/>
           <Route path='/404' element={<NotFound/>}/>
           <Route path='*' element={<NotFound/>}/>
         </Routes>
