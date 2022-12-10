@@ -4,18 +4,21 @@ import { v4 as uuidv4 } from 'uuid';
 import { useParams , useNavigate , Link , useLocation} from "react-router-dom";
 import NotFound from "../components/NotFound";
 import DefinitionSearch from "../components/DefinitionSearch";
-
+import useFetch from "../hooks/UseFetch";
 
 export default function Definition(){
-    const [word , setWord] = useState();
+    // const [word , setWord] = useState();
     const [notFound , setNotFound] = useState(false);
     const [error , setError] = useState(false);
     //console.log(useParams());
     let {search} = useParams();
     const navigate = useNavigate();
     const location = useLocation();
-
-
+    const word = useFetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+search);
+    useEffect(()=>{
+        console.log(word); // bebinim chi mide dar console
+    })
+/*
     useEffect(()=>{
         // const url = 'http://httpstat.us/404';
         // const url = 'http://www.aaaabbbb.com';
@@ -53,7 +56,7 @@ export default function Definition(){
                 // inja hala mitoni retry kuni ya logging ya harchi
             });
     },[]); //Empty dep array --> exec once
-
+*/
 
     if (notFound===true){
         return (
@@ -75,6 +78,8 @@ export default function Definition(){
         );
     }
 
+
+
     return (
     <>
         {/* <h1>Here is a definition: </h1>
@@ -89,10 +94,10 @@ export default function Definition(){
 
 
         
-        {word? 
+        {word?.[0]?.meanings ? ( //do ta ? avali vase ine ke age vojod nadasht undefined beshe ta exception nagirim va chizi dar page disp nashe 
         <>
         <h1>Here is a definition: </h1>
-        {word.map((meaning)=>{
+        {word[0].meanings.map((meaning)=>{ // inja chera ? nazashtim chun bala gozashte boodim
             return <p key={uuidv4()}>
                         {meaning.partOfSpeech +' '}:
                         {meaning.definitions[0].definition}
@@ -102,7 +107,7 @@ export default function Definition(){
         <p>Search Again:</p>
         <DefinitionSearch/>
         </>
-        : null}
+        ): null}
     </>
     );
     

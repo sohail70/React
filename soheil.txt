@@ -2102,3 +2102,19 @@ mitoni dar backedn website dobare ye new user register kuni ta bebini bad az POS
 hala berim dar App.js path ro ham ezaf kunim
 bad az takmil Register.js mitoni beri be in page --> http://localhost:3000/register va ye user register kuni --> zeman in functionality ro ham gozashtim ke age vared i page beshi 
 be sorate automatically logout kuni
+
+mitooni roye inkara karhaye dg ham bokuni --> email notification for verifying an account , user profile pages  and customizing the display on the page depending on who is logged in --> maybe you can only see certain customers and you can only do certain things
+start researching !!
+
+
+-------------------------------------------------------------------------------------
+custom hook ---> each hook introduce some functionality 
+but if we want a custom functionality that repeats thoughout our application we can create out own hook  --> masalan ye useFetch hook dorost kunim chun ziad use mikunim azash
+to isolate all the fetching login in one location and anytime we want to get something from our api we can use that hook and save alot of time wrting codes
+chun mikhaym az useFetch for multiple pages estefade kunim pas bayad ye khorde generalize shode benvisimesh
+ye folder jadid dar src folder ijad kun name esh ro bezar hooks va tosh benvis UseFetch.js  -->(pascal case convention) horof bozorg camel case
+hala poresh kun oon function ro
+
+
+khoob berim Dar Definition.js fetch esh ro hazf kunim va az useFetch e khodemon estefade kunim---> alabte nemishe masalan loop through kard yani 
+useFetch e ma faghat data ro migire va loop zadan rosh ya karhaye dg ba khodete
