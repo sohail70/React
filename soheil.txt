@@ -2118,3 +2118,9 @@ hala poresh kun oon function ro
 
 khoob berim Dar Definition.js fetch esh ro hazf kunim va az useFetch e khodemon estefade kunim---> alabte nemishe masalan loop through kard yani 
 useFetch e ma faghat data ro migire va loop zadan rosh ya karhaye dg ba khodete
+dg dar Definition.js be  -->   const [word , setWord] = useState(); niazi nist.
+vase useFetch ye errorStatus state ham mizarim ta dar component ha betoonim error handling mesle 401 ya 404 ya ... ro handle kunim
+alan ke error handling ham kardim dg be 
+    const [notFound , setNotFound] = useState(false);
+    const [error , setError] = useState(false);
+ham dar Defintion.js niazi nist

@@ -8,15 +8,15 @@ import useFetch from "../hooks/UseFetch";
 
 export default function Definition(){
     // const [word , setWord] = useState();
-    const [notFound , setNotFound] = useState(false);
-    const [error , setError] = useState(false);
+    // const [notFound , setNotFound] = useState(false);
+    // const [error , setError] = useState(false);
     //console.log(useParams());
     let {search} = useParams();
     const navigate = useNavigate();
     const location = useLocation();
-    const word = useFetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+search);
+    const [word , errorStatus]  = useFetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+search);
     useEffect(()=>{
-        console.log(word); // bebinim chi mide dar console
+        console.log('word' , word, 'errorStatus' ,errorStatus); // bebinim chi mide dar console
     })
 /*
     useEffect(()=>{
@@ -58,7 +58,7 @@ export default function Definition(){
     },[]); //Empty dep array --> exec once
 */
 
-    if (notFound===true){
+    if (errorStatus===404){
         return (
             <>
                 <NotFound/>
@@ -69,7 +69,7 @@ export default function Definition(){
 
 
 
-    if (error===true){
+    if (errorStatus){
         return (
             <>
                 <p>Something went wrong try again</p>
